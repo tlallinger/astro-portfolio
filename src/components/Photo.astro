@@ -1,15 +1,23 @@
 ---
 import Section from "@/components/Section.astro";
-import photo from "@/assets/photo.png?url";
+import photoPNG from "@/assets/photo.png?url";
+import photoJP2 from "@/assets/photo.jp2?url";
 ---
 
 <Section>
   <div class={`absolute w-full h-full flex items-center justify-center`}>
-    <img
-      src={photo}
-      alt="Photo"
-      class={"w-2/3 rounded-full dark:mix-blend-lighten"}
-    />
+    <picture class={"w-2/3 rounded-full dark:mix-blend-lighten"}>
+      <source
+        srcset={photoJP2}
+        type="image/jp2"
+        class={"rounded-full dark:mix-blend-lighten"}
+      />
+      <img
+        src={photoPNG}
+        alt="Photo"
+        class={" rounded-full dark:mix-blend-lighten"}
+      />
+    </picture>
   </div>
 
   <svg
