@@ -1,0 +1,96 @@
+---
+import "../globals.css";
+import CV from "@cv";
+
+const title = "worldwidedev";
+const { image, summary, theme } = CV.basics;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="description" content={summary} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/avatar.png" />
+    <link rel="preload" as="image" href={image} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={summary} />
+    <meta property="og:image" content="" />
+    <meta name="referrer" content="no-referrer" />
+  </head>
+  <body data-theme={theme} class="relative bg-skin-fill font-sans">
+    <div class="absolute top-0 -z-10 h-full w-full">
+      <div
+        class="absolute bottom-auto left-[20%] right-auto top-0 h-[200px] w-[200px] -translate-x-[30%] translate-y-[20%] rounded-full bg-skin-hue/10 blur-[80px] invert-0 dark:bg-white/5"
+      >
+      </div>
+    </div>
+    <slot />
+    <style>
+      body,
+      figure {
+        margin: 0;
+        padding: 0;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        @apply font-sans text-skin-base;
+        margin: 0;
+      }
+
+      p {
+        @apply text-sm text-skin-muted;
+        line-height: 1.5;
+        text-wrap: pretty;
+      }
+
+      .print {
+        display: none !important;
+      }
+
+      .dev * {
+        @apply border border-red-500/50 bg-red-500/5;
+      }
+
+      ::-webkit-scrollbar {
+        width: 2px;
+      }
+
+      @media print {
+        .print {
+          display: block !important;
+        }
+
+        astro-dev-toolbar {
+          display: none !important;
+        }
+
+        article {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </body>
+</html>

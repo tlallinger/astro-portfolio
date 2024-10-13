@@ -1,0 +1,19 @@
+---
+import CV from "@cv";
+const { basics } = CV;
+---
+
+<div class="space-y-5 text-center lg:text-left">
+  <div class="space-y-5">
+    <span class="text-7xl">{basics.label}</span>
+    <h1 class="text-4xl">
+      <div>{basics.greet}</div>
+      <span class="text-5xl text-skin-hue">
+        {basics.firstname}<span class="text-skin-base">.</span>
+      </span>
+    </h1>
+  </div>
+  <p class="font-mono opacity-75">
+    {basics.summary}
+  </p>
+</div>

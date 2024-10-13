@@ -1,0 +1,431 @@
+{
+  "basics": {
+    "greet": "Hello, I'm",
+    "firstname": "Thomas",
+    "name": "Lallinger",
+    "label": "Software Developer",
+    "image": "/avatar.png",
+    "email": "hello@world-wide.dev",
+    "summary": "I am a software developer with a passion for web technologies. I have experience in both frontend and backend development, and I am always eager to learn new things.",
+    "theme": "blue",
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "icon": "mdi:linkedin",
+        "username": "Thomas Lallinger",
+        "url": "https://www.google.com"
+      },
+      {
+        "network": "GitHub",
+        "icon": "mdi:github",
+        "username": "tlallinger",
+        "url": "https://github.com/tlallinger"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Worldwidedev",
+      "position": "Software Developer",
+      "location_type": "Remote",
+      "location": "Global",
+      "url": "",
+      "startDate": "2023-01-01",
+      "endDate": null,
+      "industry": "Self-employed software developer for various projects and industries.",
+      "highlights": [
+        "Worked with clients across different industries.",
+        "Built a solid foundation for front-end architecture using Vue and Nuxt to ensure reusability and scalability.",
+        "Developed tailored solutions to meet unique client needs, optimizing business processes."
+      ],
+      "responsibilities": [
+        "Developed and maintained backend services using Java and Dropwizard.",
+        "Built and maintained front-end applications using Vue, Nuxt, and Astro.",
+        "Provide technical consultations to clients, helping them make informed decisions about technology stacks and architecture.",
+        "Maintained and enhanced monorepos, ensuring code consistency and enabling faster onboarding for new developers.",
+        "Mentore junior developers, providing guidance and support to help them grow their technical skills and confidence in coding"
+      ],
+      "achievements": [
+        "Transitioned into self-employment, allowing for more flexibility and creativity in project selection.",
+        "Facilitated seamless cross-functional collaboration, reducing bottlenecks in communication between design and development teams.",
+        "Consistently delivered projects ahead of deadlines while maintaining high standards for quality and performance.",
+        "Successfully helped clients reduce operational costs by optimizing existing applications, increasing efficiency.",  
+        "Spearheaded migration from Webpack to Vite and from Vue 2 to Vue 3, improving build performance and maintainability."
+      ],
+      "skills": {
+        "TypeScript": "simple-icons:typescript",
+        "NuxtJs": "mdi:nuxt",
+        "Vue": "mdi:vuejs",
+        "Astro": "simple-icons:astro",
+        "Tailwind": "mdi:tailwind",
+        "Java": "mdi:language-java",
+        "Node": "ri:nodejs-line",
+        "SQL": "simple-icons:mysql",
+        "GitHub": "mdi:github",
+        "Git": "mdi:git",
+        "Jira": "simple-icons:jira"
+      }
+    },    
+    {
+      "name": "Netfonds AG",
+      "position": "Frontend Developer",
+      "location_type": "Remote",
+      "location": "Hamburg, DE",
+      "url": "https://www.netfonds.de/",
+      "startDate": "2021-02-01",
+      "endDate": "2022-12-31",
+      "industry": "Fintech",
+      "highlights": [
+        "Spearheaded migration from Webpack to Vite, improving build performance and maintainability.",
+        "Collaborated within a diverse, global team to discuss, evaluate, and implement architectural patterns, enhancing overall system efficiency and scalability."
+      ],
+      "responsibilities": [
+        "Creating and integrated user-facing elements",
+        "Designed and developed reusable components to ensure consistency across different projects, reducing development time.",
+        "Maintained and enhanced the custom CMS/Administration framework",
+        "Engaged in meticulous maintenance and continuous evolution of microservices, enhancing and managing diverse database systems.",
+        "Code reviews, providing constructive feedback and ensuring adherence to coding standards."
+      ],
+      "achievements": [
+        "Successfully led the integration of new technologies, reducing build time by 30% and increasing developer productivity.",
+        "Played a key role in achieving seamless migration to modern tech stack, which improved scalability and performance."
+      ],
+      "skills": {
+        "TypeScript": "simple-icons:typescript",
+        "VueJs": "mdi:vuejs",
+        "HTML": "simple-icons:html5",
+        "CSS": "ri:css3-fill",
+        "JavaScript": "simple-icons:javascript",
+        "Vite": "simple-icons:vite",
+        "Node": "ri:nodejs-line",
+        "SQL": "simple-icons:mysql",
+        "Java": "mdi:language-java",
+        "GitHub": "mdi:github",
+        "Git": "mdi:git",
+        "Jira": "simple-icons:jira"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "name": "HTML",
+      "icon": "simple-icons:html5",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend"
+      ]
+    },
+    {
+      "name": "CSS",
+      "icon": "ri:css3-fill",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Responsive Design"
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "icon": "simple-icons:javascript",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Backend",
+        "Fullstack"
+      ]
+    },
+    {
+      "name": "Tailwind",
+      "icon": "mdi:tailwind",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "CSS Framework",
+        "Responsive Design"
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "icon": "simple-icons:typescript",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Backend",
+        "JavaScript Superset"
+      ]
+    },
+    {
+      "name": "Node",
+      "icon": "ri:nodejs-line",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "JavaScript",
+        "Server"
+      ]
+    },
+    {
+      "name": "SQL",
+      "icon": "simple-icons:mysql",
+      "level": "Intermediate",
+      "keywords": [
+        "Databases",
+        "SQL",
+        "Data Storage",
+        "Backend"
+      ]
+    },
+    {
+      "name": "MongoDB",
+      "icon": "simple-icons:mongodb",
+      "level": "Intermediate",
+      "keywords": [
+        "Databases",
+        "File",
+        "Data Storage",
+        "Backend"
+      ]
+    },
+    {
+      "name": "Git",
+      "icon": "mdi:git",
+      "level": "Intermediate",
+      "keywords": [
+        "Version Control",
+        "Collaboration",
+        "Source Code"
+      ]
+    },
+    {
+      "name": "GitHub",
+      "icon": "mdi:github",
+      "level": "Expert",
+      "keywords": [
+        "Version Control",
+        "Collaboration",
+        "Source Code",
+        "Git"
+      ]
+    },
+    {
+      "name": "Next.js",
+      "icon": "ri:nextjs-line",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "React Framework",
+        "SSR",
+        "Static Generation"
+      ]
+    },
+    {
+      "name": "React",
+      "icon": "mdi:react",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "JavaScript Library",
+        "UI"
+      ]
+    },
+    {
+      "name": "Vue",
+      "icon": "mdi:vuejs",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "JavaScript Library",
+        "UI"
+      ]
+    },
+    {
+      "name": "Docker",
+      "icon": "mdi:docker",
+      "level": "Intermediate",
+      "keywords": [
+        "Virtual Environments",
+        "Backend"
+      ]
+    },
+    {
+      "name": "NestJS",
+      "icon": "simple-icons:nestjs",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "IOC"
+      ]
+    },
+    {
+      "name": "Vite",
+      "icon": "simple-icons:vite",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Build Tool"
+      ]
+    },
+    {
+      "name": "WordPress",
+      "icon": "ri:wordpress-fill",
+      "level": "Intermediate",
+      "keywords": [
+        "PHP",
+        "Fullstack",
+        "Frontend"
+      ]
+    },
+    {
+      "name": "Golang",
+      "icon": "simple-icons:go",
+      "level": "Beginner",
+      "keywords": [
+        "Backend",
+        "Cloud Service"
+      ]
+    },
+    {
+      "name": "Astro",
+      "icon": "simple-icons:astro",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "SSR",
+        "Static Generation"
+      ]
+    },
+    {
+      "name": "PHP",
+      "icon": "simple-icons:php",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "Fullstack"
+      ]
+    },
+    {
+      "name": "Nginx",
+      "icon": "simple-icons:nginx",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "Web Server"
+      ]
+    },
+    {
+      "name": "Tauri",
+      "icon": "simple-icons:tauri",
+      "level": "Beginner",
+      "keywords": [
+        "Desktop App",
+        "Rust",
+        "Webview"
+      ]
+    },
+    {
+      "name": "Rust",
+      "icon": "simple-icons:rust",
+      "level": "Beginner",
+      "keywords": [
+        "Desktop App",
+        "Webview"
+      ]
+    },
+    {
+      "name": "Socket.IO",
+      "icon": "simple-icons:socketdotio",
+      "level": "Beginner",
+      "keywords": [
+        "Realtime",
+        "Websocket"
+      ]
+    },
+    {
+      "name": "Electron",
+      "icon": "simple-icons:electron",
+      "level": "Beginner",
+      "keywords": [
+        "Desktop App",
+        "Webview"
+      ]
+    },
+    {
+      "name": "Shell",
+      "icon": "simple-icons:shell",
+      "level": "Intermediate",
+      "keywords": [
+        "Scripting",
+        "Automation"
+      ]
+    },
+    {
+      "name": "Linux",
+      "icon": "simple-icons:linux",
+      "level": "Intermediate",
+      "keywords": [
+        "OS",
+        "Scripting",
+        "Automation"
+      ]
+    },
+    {
+      "name": "Vercel",
+      "icon": "simple-icons:vercel",
+      "level": "Intermediate",
+      "keywords": [
+        "Serverless",
+        "Static Site Hosting"
+      ]
+    },
+    {
+      "name": "Netlify",
+      "icon": "simple-icons:netlify",
+      "level": "Intermediate",
+      "keywords": [
+        "Serverless",
+        "Static Site Hosting"
+      ]
+    },
+    {
+      "name": "Tencent Cloud",
+      "icon": "simple-icons:tencentqq",
+      "level": "Intermediate",
+      "keywords": [
+        "Cloud Service"
+      ]
+    },
+    {
+      "name": "Cloudflare Edge Functions",
+      "icon": "simple-icons:cloudflare",
+      "level": "Expert",
+      "keywords": [
+        "Serverless",
+        "Edge Computing"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "German",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "English",
+      "fluency": "Fluent"
+    }
+  ]
+}

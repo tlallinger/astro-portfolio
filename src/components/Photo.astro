@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+import Section from "@/components/Section.astro";
+import photo from "@/assets/photo.png";
+---
+
+<Section>
+  <div class={`absolute w-full h-full flex items-center justify-center`}>
+    <Image
+      src={photo}
+      alt="Photo"
+      class={"w-2/3 rounded-full dark:mix-blend-lighten"}
+    />
+  </div>
+
+  <svg
+    class={`text-skin-hue bg-skin-fill rounded-full w-full`}
+    fill="transparent"
+    viewBox="0 0 506 506"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="253"
+      cy="253"
+      r="250"
+      stroke="currentColor"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"></circle>
+  </svg>
+</Section>

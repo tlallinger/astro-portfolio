@@ -1,0 +1,8 @@
+{
+  "cSpell.words": [
+    "Hikari"
+  ],
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "notebook.defaultFormatter": "astro-build.astro-vscode"
+}
