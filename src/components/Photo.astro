@@ -1,12 +1,11 @@
 ---
-import { Image } from "astro:assets";
 import Section from "@/components/Section.astro";
-import photo from "@/assets/photo.png";
+import photo from "@/assets/photo.png?url";
 ---
 
 <Section>
   <div class={`absolute w-full h-full flex items-center justify-center`}>
-    <Image
+    <img
       src={photo}
       alt="Photo"
       class={"w-2/3 rounded-full dark:mix-blend-lighten"}
