@@ -23,10 +23,7 @@ const { name, label, image, profiles, email } = basics;
           })
         }
       </div>
-      <footer class="print">
-        {email}
-      </footer>
-      <footer class="">
+      <footer>
         {
           email && (
             <a
@@ -35,7 +32,7 @@ const { name, label, image, profiles, email } = basics;
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Icon class="" name="mdi:email" width={20} height={20} />
+              <Icon class="" name="mdi:email" size={50} />
             </a>
           )
         }
@@ -46,10 +43,9 @@ const { name, label, image, profiles, email } = basics;
                 href={url}
                 title={`Visit ${name} profile on ${network}`}
                 target="_blank"
-                class=""
                 rel="noopener noreferrer"
               >
-                <Icon class="" name={icon} width={20} height={20} />
+                <Icon class="" name={icon} size={50} />
               </a>
             );
           })
@@ -111,9 +107,8 @@ const { name, label, image, profiles, email } = basics;
     @apply mt-2 flex gap-1 text-sm;
   }
 
-  footer a,
-  footer button {
-    @apply inline-flex size-8 items-center justify-center rounded-md p-1 text-skin-hue transition-all duration-500 ease-linear hover:bg-skin-button-accent hover:text-skin-inverted;
+  footer a {
+    @apply inline-flex size-10 items-center justify-center rounded-md p-1 text-skin-hue transition-all duration-500 ease-linear hover:bg-skin-button-accent hover:text-skin-inverted;
   }
 
   @media (width <= 700px) {
@@ -138,46 +133,3 @@ const { name, label, image, profiles, email } = basics;
     }
   }
 </style>
-
-<script>
-  const select = document.getElementById("themeSwitch") as HTMLSelectElement;
-  const theme = localStorage.getItem("theme");
-  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-
-  if (theme !== null) {
-    select.value = theme;
-  } else {
-    select.value = systemTheme;
-  }
-
-  function updateTheme(value: string) {
-    const theme = value === "system" ? systemTheme : value;
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
-    localStorage.setItem("theme", value);
-  }
-
-  updateTheme(select.value);
-
-  select.addEventListener("change", (event: Event) => {
-    const select = event.target as HTMLSelectElement;
-    updateTheme(select.value);
-  });
-
-  // Deshabilitar modo oscuro al imprimir
-  window.addEventListener("beforeprint", () => {
-    document.documentElement.classList.remove("dark");
-  });
-
-  // Restaurar el modo oscuro después de imprimir
-  window.addEventListener("afterprint", () => {
-    if (
-      select.value === "dark" ||
-      (select.value === "system" && systemTheme === "dark")
-    ) {
-      document.documentElement.classList.add("dark");
-    }
-  });
-</script>

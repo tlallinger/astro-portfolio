@@ -66,30 +66,12 @@ const { image, summary, theme } = CV.basics;
         text-wrap: pretty;
       }
 
-      .print {
-        display: none !important;
-      }
-
       .dev * {
         @apply border border-red-500/50 bg-red-500/5;
       }
 
       ::-webkit-scrollbar {
         width: 2px;
-      }
-
-      @media print {
-        .print {
-          display: block !important;
-        }
-
-        astro-dev-toolbar {
-          display: none !important;
-        }
-
-        article {
-          break-inside: avoid;
-        }
       }
     </style>
   </body>
