@@ -4,64 +4,61 @@ import { Icon } from "astro-icon/components";
 const colors = ["red", "orange", "green", "blue"];
 ---
 
-<div class="inline-flex items-center">
-  <div
-    class="group flex cursor-pointer flex-col items-center gap-2 rounded-md bg-transparent"
-  >
-    <button
-      id="themeSwitch"
-      class="cursor-pointer"
-      aria-label="Toggle dark mode"
+<div
+  class={`group flex cursor-pointer items-center gap-2 rounded-md bg-transparent ${Astro.props.className}`}
+>
+  <button id="themeSwitch" class="cursor-pointer" aria-label="Toggle dark mode">
+    <i
+      class="flex items-center gap-1 text-sm font-medium leading-6 text-skin-base transition-transform ease-in-out group-hover/theme:rotate-45"
     >
-      <i
-        class="flex items-center gap-1 text-sm font-medium leading-6 text-skin-base transition-transform ease-in-out group-hover/theme:rotate-45"
+      <Icon
+        name="ri:moon-fill"
+        class="hidden dark:block"
+        width={25}
+        height={25}
+      />
+      <Icon name="ri:sun-fill" class="dark:hidden" width={20} height={20} />
+    </i>
+  </button>
+
+  <div class="relative inline-block">
+    <!-- Display the selected circle -->
+    <button
+      id="dropdownButton"
+      class="block h-8 w-8 rounded-full focus:outline-dashed"
+    >
+      <svg
+        id="selectedIcon"
+        class="h-full w-full"
+        fill="red"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
       >
-        <Icon
-          name="ri:moon-fill"
-          class="hidden dark:block"
-          width={25}
-          height={25}
-        />
-        <Icon name="ri:sun-fill" class="dark:hidden" width={20} height={20} />
-      </i>
+        <circle cx="12" cy="12" r="8"></circle>
+      </svg>
     </button>
 
-    <div class="relative inline-block">
-      <!-- Display the selected circle -->
-      <button
-        id="dropdownButton"
-        class="block h-8 w-8 rounded-full focus:outline-dashed"
-      >
-        <svg
-          id="selectedIcon"
-          class="h-full w-full"
-          fill="red"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-        >
-          <circle cx="12" cy="12" r="8"></circle>
-        </svg>
-      </button>
-
-      <!-- The dropdown menu -->
-      <div id="dropdownMenu" class="absolute mt-2 hidden w-10 rounded-md">
-        <ul>
-          {
-            colors.map((color) => (
-              <li class="cursor-pointer" data-color={color}>
-                <svg
-                  class="h-8 w-8"
-                  fill={color}
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <circle cx="12" cy="12" r="8" />
-                </svg>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+    <!-- The dropdown menu -->
+    <div
+      id="dropdownMenu"
+      class="absolute top-0 hidden w-10 items-center rounded-md md:top-auto"
+    >
+      <ul class="flex -translate-x-32 md:inline-block md:translate-x-0">
+        {
+          colors.map((color) => (
+            <li class="cursor-pointer" data-color={color}>
+              <svg
+                class="h-8 w-8"
+                fill={color}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="12" cy="12" r="8" />
+              </svg>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </div>
 </div>
@@ -163,7 +160,7 @@ const colors = ["red", "orange", "green", "blue"];
           clipPath: isDark ? [...clipPath].reverse() : clipPath,
         },
         {
-          duration: 2000,
+          duration: 1000,
           easing: "ease-out",
           pseudoElement: isDark
             ? "::view-transition-old(root)"
