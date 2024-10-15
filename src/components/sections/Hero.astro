@@ -4,13 +4,13 @@ import Section from "@/components/Section.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
-const { name, label, image, profiles, email } = basics;
+const { firstname, name, label, image, profiles, email } = basics;
 ---
 
 <Section>
   <div class="flex flex-col-reverse gap-8">
     <div class="info">
-      <h1>{name}</h1>
+      <h1>{firstname} {name}</h1>
       <h2>{label}</h2>
       <div class="flex flex-col gap-2 pt-2 text-sm text-skin-muted">
         {
