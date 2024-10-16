@@ -160,7 +160,7 @@ const colors = ["red", "orange", "green", "blue"];
           clipPath: isDark ? [...clipPath].reverse() : clipPath,
         },
         {
-          duration: 1000,
+          duration: 700,
           easing: "ease-out",
           pseudoElement: isDark
             ? "::view-transition-old(root)"
@@ -186,11 +186,7 @@ const colors = ["red", "orange", "green", "blue"];
   }
 
   // Initialize theme based on user preference or system setting
-  if (
-    localStorage.theme === "dark" ||
-    (!("theme" in localStorage) &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
+  if (localStorage.theme !== "light") {
     isDark = true;
     updateTheme();
   }
@@ -201,15 +197,6 @@ const colors = ["red", "orange", "green", "blue"];
     document.body.getAttribute("data-theme")!;
 
   updateDataTheme(storedDataTheme);
-
-  // Listen for changes in system color scheme
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", (e) => {
-      console.log(e);
-      isDark = e.matches;
-      updateTheme();
-    });
 </script>
 
 <style is:global>

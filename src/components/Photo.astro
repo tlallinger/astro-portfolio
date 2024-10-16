@@ -3,26 +3,17 @@ import Section from "@/components/Section.astro";
 import photoPNG from "@/assets/photo.png?url";
 import photoJP2 from "@/assets/photo.jp2?url";
 import photoWebp from "@/assets/photo.webp?url";
+import { basics } from "@cv";
+
+const { firstname } = basics;
 ---
 
 <Section>
   <div class={`absolute w-full h-full flex items-center justify-center`}>
     <picture class={"w-2/3 rounded-full dark:mix-blend-lighten"}>
-      <source
-        srcset={photoJP2}
-        type="image/jp2"
-        class={"rounded-full dark:mix-blend-lighten"}
-      />
-      <source
-        srcset={photoWebp}
-        type="image/webp"
-        class={"rounded-full dark:mix-blend-lighten"}
-      />
-      <img
-        src={photoPNG}
-        alt="Photo"
-        class={" rounded-full dark:mix-blend-lighten"}
-      />
+      <source srcset={photoJP2} type="image/jp2" class={"rounded-full "} />
+      <source srcset={photoWebp} type="image/webp" class={"rounded-full "} />
+      <img src={photoPNG} alt={firstname} class={" rounded-full "} />
     </picture>
   </div>
 

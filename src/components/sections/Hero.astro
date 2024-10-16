@@ -29,6 +29,7 @@ const { firstname, name, label, image, profiles, email } = basics;
             <a
               href={`mailto:${email}`}
               title={`Send email to me`}
+              aria-label="Email"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -42,6 +43,7 @@ const { firstname, name, label, image, profiles, email } = basics;
               <a
                 href={url}
                 title={`Visit ${name} profile on ${network}`}
+                aria-label={network}
                 target="_blank"
                 rel="noopener noreferrer"
               >
