@@ -186,8 +186,8 @@ const colors = ["red", "orange", "green", "blue"];
   }
 
   // Initialize theme based on user preference or system setting
-  if (localStorage.theme !== "light") {
-    isDark = true;
+  if (localStorage.theme === "light") {
+    isDark = false;
     updateTheme();
   }
 
