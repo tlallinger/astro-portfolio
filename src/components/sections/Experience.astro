@@ -7,22 +7,21 @@ import { Icon } from 'astro-icon/components'
 <Section className={Astro.props.className} title="Experience">
   <ul class="flex flex-col">
     {work.map(({ name, startDate, endDate, position, industry, responsibilities, achievements, url, skills, location, location_type }) => {
-      const startYear = new Date(startDate).getFullYear()
-      const endYear = endDate != null ? new Date(endDate).getFullYear() : "Present"
+      const startTime = new Date(startDate).toLocaleString('default', { month: 'long', year: 'numeric' })
+      const endTime = endDate != null ? new Date(endDate).toLocaleString('default', { month: 'long', year: 'numeric' }) : "Present"
 
       return (
-        <li class="relative ">
-          <div data-expanded="false" class="group relative grid pb-1  transition-all   sm:grid-cols-12 sm:gap-8 md:gap-6 lg:hover:!opacity-100 expand-container">
+        <li class="relative">
+          <div data-expanded="false" class="group relative grid pb-1 transition-all sm:grid-cols-12 sm:gap-8 md:gap-6 lg:hover:!opacity-100 expand-container">
             <header class="relative mt-1 text-xs font-semibold sm:col-span-2">
-              <time datetime={startDate} data-title={startDate}>{startYear}</time> - <time datetime={endDate} data-title={endDate}>{endYear}</time>
+              <time datetime={startTime} data-title={startTime}>{startTime}</time> - <time datetime={endTime} data-title={endTime}>{endTime}</time>
             </header>
-            <div class="relative flex flex-col pb-6  before:-ml-6 sm:col-span-10 before:w-px before:absolute before:bg-skin-muted before:h-full before:mt-2">
-            <div class="absolute w-2 h-2 bg-skin-muted rounded-full mt-2 -translate-x-[1.71rem] ring  ring-skin-fill"></div>
+            <div class="relative flex flex-col pb-6 before:-ml-6 sm:col-span-10 before:w-px before:absolute before:bg-skin-muted before:h-full before:mt-2">
               <h3>
                 <div class="inline-flex items-center text-lg  leading-tight group/link focus-visible:text-amber-500" aria-label="{position} - {company}">
                   <span>{position} <span>@</span>
                   {url ? (
-                    <a class="text-skin-hue" href={url} title={`Ver ${name}`} target="_blank">{name}</a>
+                    <a class="text-skin-hue" href={url} title={name} target="_blank">{name}</a>
                   ) : (
                     <span>{name}</span>
                   )}
@@ -51,7 +50,7 @@ import { Icon } from 'astro-icon/components'
                 )}
 
                 {(responsibilities || achievements) &&  (
-                <div class="after:from-skin-hue dark:after:to-skin-hue/0 flex relative flex-col after:bg-gradient-to-t after:absolute after:bottom-0 after:w-full after:h-12 after:content-[''] h-16 group-data-[expanded=true]:after:hidden group-data-[expanded=true]:h-auto overflow-hidden duration-200 ease-out">
+                <div class="after:from-skin-hue dark:after:to-skin-hue/0 flex relative flex-col after:bg-gradient-to-t after:absolute after:bottom-0 after:w-full after:h-24 after:content-[''] h-52 group-data-[expanded=true]:after:hidden group-data-[expanded=true]:h-auto overflow-hidden duration-200 ease-out">
                 {responsibilities && (
                   <div class="flex flex-col gap-1">
                     <h4>Responsibilities:</h4>
@@ -75,7 +74,7 @@ import { Icon } from 'astro-icon/components'
                 )}
                 </div>
 
-                <button class=" group/more w-fit cursor-pointer items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-all hover:text-skin-base flex expand-button">
+                <button class="group/more w-fit cursor-pointer items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-all hover:text-skin-base flex expand-button">
                   <span class="expand-text">Show more</span>
                   <Icon name="ri:arrow-up-s-line" class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out group-data-[expanded=true]:rotate-180" width={24} height={24}></Icon>
                 </button>
@@ -93,7 +92,7 @@ import { Icon } from 'astro-icon/components'
 )}
               </div>
             </div>
-        </div>
+          </div>
         </li>
       )
     })}
