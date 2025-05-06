@@ -25,83 +25,43 @@
   },
   "work": [
     {
-      "name": "Worldwidedev",
-      "position": "Software Developer",
-      "location_type": "Remote",
-      "location": "Global",
-      "url": "",
-      "startDate": "2023-01-01",
-      "endDate": null,
-      "industry": "Self-employed software developer. Currently at Netfonds AG",
-      "highlights": [
-        "Worked with clients across different industries.",
-        "Built a solid foundation for front-end architecture using Vue and Nuxt to ensure reusability and scalability.",
-        "Developed tailored solutions to meet unique client needs, optimizing business processes."
-      ],
-      "responsibilities": [
-        "Developed and maintained backend services using Java and Dropwizard.",
-        "Built and maintained front-end applications using Vue, Nuxt, and Astro.",
-        "Provide technical consultations to clients, helping them make informed decisions about technology stacks and architecture.",
-        "Maintained and enhanced monorepos, ensuring code consistency and enabling faster onboarding for new developers.",
-        "Mentore junior developers, providing guidance and support to help them grow their technical skills and confidence in coding"
-      ],
-      "achievements": [
-        "Transitioned into self-employment, allowing for more flexibility and creativity in project selection.",
-        "Facilitated seamless cross-functional collaboration, reducing bottlenecks in communication between design and development teams.",
-        "Consistently delivered projects ahead of deadlines while maintaining high standards for quality and performance.",
-        "Successfully helped clients reduce operational costs by optimizing existing applications, increasing efficiency.",  
-        "Spearheaded migration from Webpack to Vite and from Vue 2 to Vue 3, improving build performance and maintainability."
-      ],
-      "skills": {
-        "TypeScript": "simple-icons:typescript",
-        "NuxtJs": "mdi:nuxt",
-        "Vue": "mdi:vuejs",
-        "Astro": "simple-icons:astro",
-        "Tailwind": "mdi:tailwind",
-        "Java": "mdi:language-java",
-        "Node": "ri:nodejs-line",
-        "SQL": "simple-icons:mysql",
-        "GitHub": "mdi:github",
-        "Git": "mdi:git",
-        "Jira": "simple-icons:jira"
-      }
-    },    
-    {
       "name": "Netfonds AG",
-      "position": "Frontend Developer",
+      "position": "Fullstack Developer",
       "location_type": "Remote",
       "location": "Hamburg, DE",
       "url": "https://www.netfonds.de/",
       "startDate": "2021-02-01",
-      "endDate": "2022-12-31",
+      "endDate": null,
       "industry": "Fintech",
       "highlights": [
-        "Spearheaded migration from Webpack to Vite, improving build performance and maintainability.",
+        "Designed and implemented a microfrontend architecture to enhance modularity and scalability of multiple libraries and frameworks.",
         "Collaborated within a diverse, global team to discuss, evaluate, and implement architectural patterns, enhancing overall system efficiency and scalability."
       ],
       "responsibilities": [
-        "Creating and integrated user-facing elements",
-        "Designed and developed reusable components to ensure consistency across different projects, reducing development time.",
-        "Maintained and enhanced the custom CMS/Administration framework",
+        "Developed and maintained backend services using Java and Dropwizard.",
+        "Enhancing development experience and efficiency by evaluating and implementing new technologies.",
+        "Developed reusable components to ensure consistency across different projects, reducing development time.",
+        "Mentore junior developers and new team members through onboarding, hands-on guidance, and continuous support, fostering their technical growth and integration into the team.",
         "Engaged in meticulous maintenance and continuous evolution of microservices, enhancing and managing diverse database systems.",
         "Code reviews, providing constructive feedback and ensuring adherence to coding standards."
       ],
       "achievements": [
-        "Successfully led the integration of new technologies, reducing build time by 30% and increasing developer productivity.",
+        "Successfully led the integration of new technologies and major refactorings, reducing build time by 30% and increasing developer productivity.",
         "Played a key role in achieving seamless migration to modern tech stack, which improved scalability and performance."
       ],
       "skills": {
         "TypeScript": "simple-icons:typescript",
-        "VueJs": "mdi:vuejs",
-        "HTML": "simple-icons:html5",
-        "CSS": "ri:css3-fill",
+        "VueJs": "simple-icons:vuedotjs",
+        "Tailwind": "simple-icons:tailwindcss",
         "JavaScript": "simple-icons:javascript",
         "Vite": "simple-icons:vite",
-        "Node": "ri:nodejs-line",
+        "Lerna": "simple-icons:lerna",
+        "vuetify": "simple-icons:vuetify",
+        "Node": "simple-icons:nodedotjs",
         "SQL": "simple-icons:mysql",
         "Java": "mdi:language-java",
-        "GitHub": "mdi:github",
-        "Git": "mdi:git",
+        "GitHub": "simple-icons:github",
+        "Git": "simple-icons:git",
         "Jira": "simple-icons:jira"
       }
     }
@@ -111,31 +71,19 @@
       "name": "HTML",
       "icon": "simple-icons:html5",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend"
-      ]
+      "keywords": ["Web Development", "Frontend"]
     },
     {
       "name": "CSS",
       "icon": "ri:css3-fill",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Responsive Design"
-      ]
+      "keywords": ["Web Development", "Frontend", "Responsive Design"]
     },
     {
       "name": "JavaScript",
       "icon": "simple-icons:javascript",
       "level": "Expert",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Backend",
-        "Fullstack"
-      ]
+      "keywords": ["Web Development", "Frontend", "Backend", "Fullstack"]
     },
     {
       "name": "Tailwind",
@@ -163,259 +111,97 @@
       "name": "Node",
       "icon": "ri:nodejs-line",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Backend",
-        "JavaScript",
-        "Server"
-      ]
+      "keywords": ["Web Development", "Backend", "JavaScript", "Server"]
     },
     {
       "name": "SQL",
       "icon": "simple-icons:mysql",
       "level": "Intermediate",
-      "keywords": [
-        "Databases",
-        "SQL",
-        "Data Storage",
-        "Backend"
-      ]
+      "keywords": ["Databases", "SQL", "Data Storage", "Backend"]
     },
     {
       "name": "MongoDB",
       "icon": "simple-icons:mongodb",
-      "level": "Intermediate",
-      "keywords": [
-        "Databases",
-        "File",
-        "Data Storage",
-        "Backend"
-      ]
+      "level": "Beginner",
+      "keywords": ["Databases", "File", "Data Storage", "Backend"]
     },
     {
       "name": "Git",
       "icon": "mdi:git",
       "level": "Intermediate",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code"
-      ]
+      "keywords": ["Version Control", "Collaboration", "Source Code"]
     },
     {
       "name": "GitHub",
       "icon": "mdi:github",
       "level": "Expert",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code",
-        "Git"
-      ]
-    },
-    {
-      "name": "Next.js",
-      "icon": "ri:nextjs-line",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "React Framework",
-        "SSR",
-        "Static Generation"
-      ]
+      "keywords": ["Version Control", "Collaboration", "Source Code", "Git"]
     },
     {
       "name": "React",
       "icon": "mdi:react",
-      "level": "Expert",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "JavaScript Library",
-        "UI"
-      ]
+      "level": "Intermediate",
+      "keywords": ["Web Development", "Frontend", "JavaScript Library", "UI"]
     },
     {
       "name": "Vue",
       "icon": "mdi:vuejs",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "JavaScript Library",
-        "UI"
-      ]
-    },
-    {
-      "name": "Docker",
-      "icon": "mdi:docker",
-      "level": "Intermediate",
-      "keywords": [
-        "Virtual Environments",
-        "Backend"
-      ]
-    },
-    {
-      "name": "NestJS",
-      "icon": "simple-icons:nestjs",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Backend",
-        "IOC"
-      ]
+      "level": "Expert",
+      "keywords": ["Web Development", "Frontend", "JavaScript Library", "UI"]
     },
     {
       "name": "Vite",
       "icon": "simple-icons:vite",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Build Tool"
-      ]
+      "keywords": ["Web Development", "Frontend", "Build Tool"]
     },
     {
       "name": "WordPress",
       "icon": "ri:wordpress-fill",
       "level": "Intermediate",
-      "keywords": [
-        "PHP",
-        "Fullstack",
-        "Frontend"
-      ]
+      "keywords": ["PHP", "Fullstack", "Frontend"]
     },
     {
       "name": "Golang",
       "icon": "simple-icons:go",
       "level": "Beginner",
-      "keywords": [
-        "Backend",
-        "Cloud Service"
-      ]
+      "keywords": ["Backend", "Cloud Service"]
     },
     {
       "name": "Astro",
       "icon": "simple-icons:astro",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "SSR",
-        "Static Generation"
-      ]
+      "keywords": ["Web Development", "Frontend", "SSR", "Static Generation"]
     },
     {
-      "name": "PHP",
-      "icon": "simple-icons:php",
+      "name": "Sass",
+      "icon": "simple-icons:sass",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Backend",
-        "Fullstack"
-      ]
+      "keywords": ["Web Development", "Frontend", "CSS Preprocessor"]
     },
     {
-      "name": "Nginx",
-      "icon": "simple-icons:nginx",
+      "name": "Vuetify",
+      "icon": "simple-icons:vuetify",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Backend",
-        "Web Server"
-      ]
+      "keywords": ["Web Development", "Frontend", "UI Framework"]
     },
     {
-      "name": "Tauri",
-      "icon": "simple-icons:tauri",
-      "level": "Beginner",
-      "keywords": [
-        "Desktop App",
-        "Rust",
-        "Webview"
-      ]
-    },
-    {
-      "name": "Rust",
-      "icon": "simple-icons:rust",
-      "level": "Beginner",
-      "keywords": [
-        "Desktop App",
-        "Webview"
-      ]
-    },
-    {
-      "name": "Socket.IO",
-      "icon": "simple-icons:socketdotio",
-      "level": "Beginner",
-      "keywords": [
-        "Realtime",
-        "Websocket"
-      ]
-    },
-    {
-      "name": "Electron",
-      "icon": "simple-icons:electron",
-      "level": "Beginner",
-      "keywords": [
-        "Desktop App",
-        "Webview"
-      ]
-    },
-    {
-      "name": "Shell",
-      "icon": "simple-icons:shell",
+      "name": "Lerna",
+      "icon": "simple-icons:lerna",
       "level": "Intermediate",
-      "keywords": [
-        "Scripting",
-        "Automation"
-      ]
+      "keywords": ["JavaScript", "Monorepo"]
     },
     {
-      "name": "Linux",
-      "icon": "simple-icons:linux",
+      "name": "Jira",
+      "icon": "simple-icons:jira",
       "level": "Intermediate",
-      "keywords": [
-        "OS",
-        "Scripting",
-        "Automation"
-      ]
-    },
-    {
-      "name": "Vercel",
-      "icon": "simple-icons:vercel",
-      "level": "Intermediate",
-      "keywords": [
-        "Serverless",
-        "Static Site Hosting"
-      ]
+      "keywords": ["Project Management"]
     },
     {
       "name": "Netlify",
       "icon": "simple-icons:netlify",
       "level": "Intermediate",
-      "keywords": [
-        "Serverless",
-        "Static Site Hosting"
-      ]
-    },
-    {
-      "name": "Tencent Cloud",
-      "icon": "simple-icons:tencentqq",
-      "level": "Intermediate",
-      "keywords": [
-        "Cloud Service"
-      ]
-    },
-    {
-      "name": "Cloudflare Edge Functions",
-      "icon": "simple-icons:cloudflare",
-      "level": "Expert",
-      "keywords": [
-        "Serverless",
-        "Edge Computing"
-      ]
+      "keywords": ["Serverless", "Static Site Hosting"]
     }
   ],
   "languages": [

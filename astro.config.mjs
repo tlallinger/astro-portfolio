@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig, passthroughImageService } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import astroIcon from 'astro-icon';
+import astroIcon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,8 +13,8 @@ export default defineConfig({
     astroIcon({
       include: {
         mdi: ["*"],
-        'ri': ['*'],
-        'simple-icons': ['*'],
+        ri: ["*"],
+        "simple-icons": ["*"],
       },
     }),
   ],

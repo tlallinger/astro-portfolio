@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 
-import ThemeSwitch from "@/components/ThemeSwitch.astro";
+// import ThemeSwitch from "@/components/ThemeSwitch.astro";
 import Hero from "@/components/sections/Hero.astro";
 import Experience from "@/components/sections/Experience.astro";
 import About from "@/components/sections/About.astro";
@@ -10,9 +10,9 @@ import { Icon } from "astro-icon/components";
 ---
 
 <Layout>
-  <div class="absolute right-4 top-5 z-50 md:fixed">
+  <!-- <div class="absolute right-4 top-5 z-50 md:fixed">
     <ThemeSwitch className="flex-row-reverse md:flex-col" />
-  </div>
+  </div> -->
 
   <main class="container">
     <div
@@ -70,6 +70,9 @@ import { Icon } from "astro-icon/components";
 </script>
 
 <style>
+  :global(.dark) {
+    color-scheme: dark;
+  }
   .scroll-icon {
     transition:
       opacity 0.5s ease,

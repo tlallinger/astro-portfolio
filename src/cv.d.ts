@@ -18,7 +18,7 @@ interface Basics {
 }
 
 interface Profiles {
-  icon: string,
+  icon: string;
   network: string;
   username: string;
   url: string;
@@ -42,7 +42,7 @@ interface Work {
 type DateStr = `${string}-${string}-${string}`;
 
 interface Skills {
-  icon: string,
+  icon: string;
   name: string;
   level: string;
   keywords: Array<string>;
@@ -53,9 +53,6 @@ interface Languages {
   fluency: string;
 }
 
-type Language =
-  | "English"
-  | "German"
-  | string;
+type Language = "English" | "German" | string;
 
 type Highlight = Array<String>;
