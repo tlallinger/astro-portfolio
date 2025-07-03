@@ -1,6 +1,7 @@
 ---
 import Section from "@/components/Section.astro";
 import photoPNG from "@/assets/photo.png?url";
+import photoWebp from "@/assets/photo.webp?url";
 import { basics } from "@cv";
 
 const { firstname } = basics;
@@ -9,6 +10,7 @@ const { firstname } = basics;
 <Section>
   <div class="absolute flex h-full w-full items-center justify-center">
     <picture class="fade-in w-10/12 opacity-0 dark:mix-blend-lighten">
+      <source srcset={photoWebp} type="image/webp" class={"rounded-full"} />
       <img src={photoPNG} alt={firstname} class="rounded-full" />
     </picture>
   </div>
