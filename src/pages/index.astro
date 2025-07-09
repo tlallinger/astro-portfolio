@@ -6,6 +6,7 @@ import Hero from "@/components/sections/Hero.astro";
 import Experience from "@/components/sections/Experience.astro";
 import About from "@/components/sections/About.astro";
 import Photo from "@/components/Photo.astro";
+import Contact from "@/components/sections/Contact.astro";
 import { Icon } from "astro-icon/components";
 ---
 
@@ -47,6 +48,16 @@ import { Icon } from "astro-icon/components";
       </div>
       <div class="slide-enter-content space-y-12 md:col-span-4">
         <Experience />
+      </div>
+    </div>
+    <div
+      id="section-3"
+      class="relative mx-auto grid h-full max-w-7xl gap-12 p-8 max-sm:py-16 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24"
+    >
+      <div
+        class="slide-enter-content col-span-6 my-auto space-y-12 lg:col-span-3"
+      >
+        <Contact />
       </div>
     </div>
   </main>
