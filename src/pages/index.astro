@@ -11,13 +11,12 @@ import { Icon } from "astro-icon/components";
 ---
 
 <Layout>
-  <!-- <div class="absolute right-4 top-5 z-50 md:fixed">
-    <ThemeSwitch className="flex-row-reverse md:flex-col" />
-  </div> -->
-
-  <main class="container">
+  <main
+    class="snap-y snap-mandatory overflow-y-scroll scroll-smooth md:h-screen"
+  >
     <div
-      class="relative mx-auto grid h-full max-w-7xl gap-12 p-8 max-sm:py-16 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24"
+      id="section-1"
+      class="relative mx-auto grid h-full max-w-7xl snap-start gap-12 p-8 max-sm:py-16 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24"
     >
       <div
         class="slide-enter-content col-span-6 my-auto space-y-12 lg:col-span-3"
@@ -30,7 +29,7 @@ import { Icon } from "astro-icon/components";
         <Photo />
       </div>
       <div
-        class="scroll-icon absolute bottom-4 left-1/2 -translate-x-1/2 transform transition-opacity"
+        class="xs:hidden scroll-icon absolute bottom-4 left-1/2 -translate-x-1/2 transform transition-opacity"
       >
         <Icon
           name="mdi:arrow-down-circle"
@@ -41,22 +40,23 @@ import { Icon } from "astro-icon/components";
     </div>
     <div
       id="section-2"
-      class="relative mx-auto grid h-full max-w-7xl gap-12 p-8 max-sm:py-16 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24"
+      class="relative mx-auto grid h-full max-w-7xl snap-start gap-12 overflow-y-scroll p-8 max-sm:py-16 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24"
     >
-      <div class="slide-enter space-y-6 ease-in md:col-span-2">
+      <!-- Sticky Hero (left) -->
+      <div class="md:sticky md:top-0 md:col-span-2 md:self-start">
         <Hero />
       </div>
-      <div class="slide-enter-content space-y-12 md:col-span-4">
+
+      <!-- Scrollable Experience (right) -->
+      <div class="max-h-full pr-2 md:col-span-4 md:overflow-y-auto">
         <Experience />
       </div>
     </div>
     <div
       id="section-3"
-      class="relative mx-auto grid h-full max-w-7xl gap-12 p-8 max-sm:py-16 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24"
+      class="slide-enter-content flex h-screen snap-start items-center justify-center px-4"
     >
-      <div
-        class="slide-enter-content col-span-6 my-auto space-y-12 lg:col-span-3"
-      >
+      <div class="mx-4">
         <Contact />
       </div>
     </div>

@@ -6,7 +6,8 @@ import Section from "@/components/Section.astro";
   <form
     name="contact"
     data-netlify="true"
-    class="mx-auto max-w-2xl space-y-6 rounded-xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur-md"
+    class="mx-auto w-screen max-w-2xl space-y-6 rounded-xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur-md"
+    id="contact-form"
   >
     <input type="hidden" name="form-name" value="contact" />
 
@@ -52,9 +53,54 @@ import Section from "@/components/Section.astro";
 
     <button
       type="submit"
-      class="w-full rounded-md border border-solid border-skin-hue/20 bg-skin-button-accent/20 px-10 py-2 text-xs font-medium text-skin-hue transition hover:bg-skin-button-accent md:w-auto"
+      id="submit-btn"
+      class="rounded-md border border-skin-hue/20 bg-skin-button-accent/20 px-10 py-2 text-xs font-medium text-skin-hue transition hover:bg-skin-button-accent"
     >
       Send
     </button>
+
+    <p id="form-status" class="mt-4 hidden text-sm text-white">
+      Message sent! ✅
+    </p>
   </form>
+
+  <script>
+    const handleSubmit = (event: Event) => {
+      event.preventDefault();
+
+      const myForm = event.target as HTMLFormElement;
+      const formData = new FormData(myForm);
+
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      })
+        .then(() => {
+          console.log("Form successfully submitted");
+          const statusMessage = document.getElementById("form-status");
+          const submitButton = document.getElementById("submit-btn");
+          if (statusMessage && submitButton) {
+            submitButton.classList.add("hidden");
+            statusMessage.classList.remove("hidden");
+            statusMessage.textContent = "Message sent! ✅";
+          }
+
+          setTimeout(() => {
+            if (statusMessage) {
+              statusMessage.classList.add("hidden");
+            }
+            if (submitButton) {
+              submitButton.classList.remove("hidden");
+            }
+            myForm.reset();
+          }, 5000);
+        })
+        .catch((error) => alert(error));
+    };
+
+    document
+      .querySelector("#contact-form")
+      ?.addEventListener("submit", handleSubmit as EventListener);
+  </script>
 </Section>

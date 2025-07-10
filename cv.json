@@ -4,6 +4,7 @@
     "firstname": "Thomas",
     "name": "Lallinger",
     "label": "Software Developer",
+    "location": "Munich, DE",
     "image": "/avatar.png",
     "email": "hello@world-wide.dev",
     "summary": "I am a software developer with a passion for web technologies. I have experience in both frontend and backend development, and I am always eager to learn new things.",
@@ -33,21 +34,18 @@
       "startDate": "2021-02-01",
       "endDate": null,
       "industry": "Fintech",
-      "highlights": [
-        "Designed and implemented a microfrontend architecture to enhance modularity and scalability of multiple libraries and frameworks.",
-        "Collaborated within a diverse, global team to discuss, evaluate, and implement architectural patterns, enhancing overall system efficiency and scalability."
-      ],
+      "highlights": [],
       "responsibilities": [
-        "Developed and maintained backend services using Java and Dropwizard.",
-        "Enhancing development experience and efficiency by evaluating and implementing new technologies.",
-        "Developed reusable components to ensure consistency across different projects, reducing development time.",
-        "Mentore junior developers and new team members through onboarding, hands-on guidance, and continuous support, fostering their technical growth and integration into the team.",
-        "Engaged in meticulous maintenance and continuous evolution of microservices, enhancing and managing diverse database systems.",
-        "Code reviews, providing constructive feedback and ensuring adherence to coding standards."
+        "Developed and maintained microservices using Java and Dropwizard, as well as relational database structures.",
+        "Created reusable components to ensure consistency across various projects.",
+        "Mentored junior developers and new team members during onboarding, providing hands-on guidance and continuous support to foster their technical growth and integration into the team.",
+        "Conducted code reviews, offering constructive feedback and ensuring adherence to coding standards.",
+        "Responsible for frontend tooling and its configurations.",
+        "Collaborated closely with IT Security to identify, assess, and promptly remediate code vulnerabilities using SonarQube; proactively enhanced security practices by developing custom ESLint rules."
       ],
       "achievements": [
-        "Successfully led the integration of new technologies and major refactorings, reducing build time by 30% and increasing developer productivity.",
-        "Played a key role in achieving seamless migration to modern tech stack, which improved scalability and performance."
+        "Designed and implemented a microfrontend architecture using Lerna to enhance the modularity and scalability.",
+        "Successfully led the integration of new technologies and major refactorings, resulting in a more than 30% reduction in build time, and increased developer experience and productivity."
       ],
       "skills": {
         "TypeScript": "simple-icons:typescript",
