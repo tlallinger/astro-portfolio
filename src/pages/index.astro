@@ -12,7 +12,7 @@ import { Icon } from "astro-icon/components";
 
 <Layout>
   <main
-    class="snap-y snap-mandatory overflow-y-scroll scroll-smooth md:h-screen"
+    class="scroll-smooth lg:h-screen lg:snap-y lg:snap-mandatory lg:overflow-y-scroll"
   >
     <div
       id="section-1"
@@ -40,15 +40,15 @@ import { Icon } from "astro-icon/components";
     </div>
     <div
       id="section-2"
-      class="relative mx-auto grid h-full max-w-7xl snap-start gap-12 p-8 max-sm:py-16 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24"
+      class="relative mx-auto grid max-w-7xl gap-12 p-8 max-sm:py-16 lg:min-h-screen lg:snap-start lg:grid-cols-6 lg:p-16 xl:gap-24"
     >
       <!-- Sticky Hero (left) -->
-      <div class="md:sticky md:top-0 md:col-span-2 md:self-start">
+      <div class="lg:sticky lg:top-10 lg:col-span-2 lg:self-start">
         <Hero />
       </div>
 
       <!-- Scrollable Experience (right) -->
-      <div class="max-h-full pr-2 md:col-span-4 md:overflow-y-auto">
+      <div class="pr-2 lg:col-span-4 lg:max-h-full xl:overflow-y-auto">
         <Experience />
       </div>
     </div>
