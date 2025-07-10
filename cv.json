@@ -44,7 +44,7 @@
         "Collaborated closely with IT Security to identify, assess, and promptly remediate code vulnerabilities using SonarQube; proactively enhanced security practices by developing custom ESLint rules."
       ],
       "achievements": [
-        "Designed and implemented a microfrontend architecture using Lerna to enhance the modularity and scalability.",
+        "Developed and implemented a microfrontend architecture using Lerna to improve modularity and scalability, enabling the simultaneous use of different frameworks and versions.",
         "Successfully led the integration of new technologies and major refactorings, resulting in a more than 30% reduction in build time, and increased developer experience and productivity."
       ],
       "skills": {
