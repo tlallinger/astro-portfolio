@@ -1,0 +1,55 @@
+export const languages = {
+  en: 'English',
+  de: 'Deutsch',
+};
+
+export const defaultLang: keyof typeof languages = 'en';
+
+export const ui: Record<keyof typeof languages, Record<string, string>> = {
+  en: {
+    'section.about': 'About',
+    'section.experience': 'Experience',
+    'section.contact': 'Contact',
+    'timeline.present': 'Present',
+    'experience.industry': 'Industry',
+    'experience.highlights': 'Highlights',
+    'experience.responsibilities': 'Responsibilities',
+    'experience.achievements': 'Achievements',
+    'experience.seeMore': 'See more',
+    'experience.seeLess': 'See less',
+    'contact.name': 'Name',
+    'contact.name.placeholder': 'Enter your name',
+    'contact.email': 'Email',
+    'contact.email.placeholder': 'Enter your email',
+    'contact.message': 'Message',
+    'contact.message.placeholder': 'Enter your message',
+    'contact.submit': 'Send',
+    'contact.success': 'Message sent successfully!',
+    'contact.error': 'Error sending message. Please try again later.',
+    'contact.required': 'This field is required.',
+    'contact.invalidEmail': 'Please enter a valid email address.',
+  },
+  de: {
+    'section.about': 'Über mich',
+    'section.experience': 'Erfahrung',
+    'section.contact': 'Kontakt',
+    'timeline.present': 'Heute',
+    'experience.industry': 'Branche',
+    'experience.highlights': 'Highlights',
+    'experience.responsibilities': 'Verantwortlichkeiten',
+    'experience.achievements': 'Erfolge',
+    'experience.seeMore': 'Mehr anzeigen',
+    'experience.seeLess': 'Weniger anzeigen',
+    'contact.name': 'Name',
+    'contact.name.placeholder': 'Namen eingeben',
+    'contact.email': 'E-Mail',
+    'contact.email.placeholder': 'E-Mail eingeben',
+    'contact.message': 'Nachricht',
+    'contact.message.placeholder': 'Nachricht eingeben',
+    'contact.submit': 'Senden',
+    'contact.success': 'Nachricht erfolgreich gesendet!',
+    'contact.error': 'Fehler beim Senden der Nachricht. Bitte versuche es später erneut.',
+    'contact.required': 'Dieses Feld ist erforderlich.',
+    'contact.invalidEmail': 'Bitte gib eine gültige E-Mail-Adresse ein.',
+  }
+} as const;

@@ -1,19 +1,17 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import Layout from '@/layouts/Layout.astro';
 
 // import ThemeSwitch from "@/components/ThemeSwitch.astro";
-import Hero from "@/components/sections/Hero.astro";
-import Experience from "@/components/sections/Experience.astro";
-import About from "@/components/sections/About.astro";
-import Photo from "@/components/Photo.astro";
-import Contact from "@/components/sections/Contact.astro";
-import { Icon } from "astro-icon/components";
+import Hero from '@/components/sections/Hero.astro';
+import Experience from '@/components/sections/Experience.astro';
+import About from '@/components/sections/About.astro';
+import Photo from '@/components/Photo.astro';
+import Contact from '@/components/sections/Contact.astro';
+import { Icon } from 'astro-icon/components';
 ---
 
 <Layout>
-  <main
-    class="scroll-smooth lg:h-screen lg:snap-y lg:snap-mandatory lg:overflow-y-scroll"
-  >
+  <main class="scroll-smooth">
     <div
       id="section-1"
       class="relative mx-auto grid h-full max-w-7xl snap-start gap-12 p-8 max-sm:py-16 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24"
@@ -48,7 +46,7 @@ import { Icon } from "astro-icon/components";
       </div>
 
       <!-- Scrollable Experience (right) -->
-      <div class="pr-2 lg:col-span-4 lg:max-h-full xl:overflow-y-auto">
+      <div class="pr-2 lg:col-span-4">
         <Experience />
       </div>
     </div>
@@ -64,19 +62,19 @@ import { Icon } from "astro-icon/components";
 </Layout>
 
 <script>
-  window.addEventListener("scroll", function () {
-    const icon = document.querySelector(".scroll-icon");
+  window.addEventListener('scroll', function () {
+    const icon = document.querySelector('.scroll-icon');
     if (window.scrollY > 0) {
-      icon?.classList.add("hidden-icon");
+      icon?.classList.add('hidden-icon');
     } else {
-      icon?.classList.remove("hidden-icon");
+      icon?.classList.remove('hidden-icon');
     }
   });
   document
-    ?.querySelector(".scroll-icon")
-    ?.addEventListener("click", function () {
-      const section = document.getElementById("section-2");
-      section?.scrollIntoView({ behavior: "smooth" });
+    ?.querySelector('.scroll-icon')
+    ?.addEventListener('click', function () {
+      const section = document.getElementById('section-2');
+      section?.scrollIntoView({ behavior: 'smooth' });
     });
 </script>
 

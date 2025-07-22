@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components';
 ---
 
 <div
@@ -27,9 +27,9 @@ import { Icon } from "astro-icon/components";
 </style>
 
 <script>
-  const themeSwitchButton = document.getElementById("themeSwitch");
+  const themeSwitchButton = document.getElementById('themeSwitch');
 
-  let isDark = document.documentElement.classList.contains("dark");
+  let isDark = document.documentElement.classList.contains('dark');
 
   function toggleDark(event: MouseEvent) {
     const x = event.clientX;
@@ -41,7 +41,7 @@ import { Icon } from "astro-icon/components";
   function startTransition(x: number, y: number) {
     const endRadius = Math.hypot(
       Math.max(x, innerWidth - x),
-      Math.max(y, innerHeight - y),
+      Math.max(y, innerHeight - y)
     );
 
     const transition = document.startViewTransition(async () => {
@@ -60,26 +60,26 @@ import { Icon } from "astro-icon/components";
         },
         {
           duration: 700,
-          easing: "ease-out",
+          easing: 'ease-out',
           pseudoElement: isDark
-            ? "::view-transition-old(root)"
-            : "::view-transition-new(root)",
-        },
+            ? '::view-transition-old(root)'
+            : '::view-transition-new(root)',
+        }
       );
     });
   }
 
   function updateTheme() {
-    document.documentElement.classList.toggle("dark", isDark);
-    localStorage.setItem("theme", isDark ? "dark" : "light");
+    document.documentElement.classList.toggle('dark', isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }
 
   if (themeSwitchButton) {
-    themeSwitchButton.addEventListener("click", toggleDark);
+    themeSwitchButton.addEventListener('click', toggleDark);
   }
 
   // Initialize theme based on user preference or system setting
-  if (localStorage.theme === "light") {
+  if (localStorage.theme === 'light') {
     isDark = false;
     updateTheme();
   }

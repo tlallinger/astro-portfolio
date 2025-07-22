@@ -1,8 +1,9 @@
 ---
-import Section from "@/components/Section.astro";
+import Section from '@/components/Section.astro';
+import { t } from '@/i18n/utils';
 ---
 
-<Section className={Astro.props.className} title="Contact">
+<Section className={Astro.props.className} title={t('section.contact')}>
   <form
     name="contact"
     data-netlify="true"
@@ -20,7 +21,7 @@ import Section from "@/components/Section.astro";
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
       <div class="flex flex-col">
         <label for="name" class="mb-1 text-sm font-medium text-white"
-          >Name</label
+          >{t('contact.name')}</label
         >
         <input
           type="text"
@@ -28,11 +29,12 @@ import Section from "@/components/Section.astro";
           name="name"
           required
           class="rounded-md border border-skin-hue/20 bg-white/10 px-3 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-skin-hue"
+          placeholder={t('contact.name.placeholder')}
         />
       </div>
       <div class="flex flex-col">
         <label for="email" class="mb-1 text-sm font-medium text-white"
-          >Email</label
+          >{t('contact.email')}</label
         >
         <input
           type="email"
@@ -40,13 +42,14 @@ import Section from "@/components/Section.astro";
           name="email"
           required
           class="rounded-md border border-skin-hue/20 bg-white/10 px-3 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-skin-hue"
+          placeholder={t('contact.email.placeholder')}
         />
       </div>
     </div>
 
     <div class="flex flex-col">
       <label for="message" class="mb-1 text-sm font-medium text-white"
-        >Message</label
+        >{t('contact.message')}</label
       >
       <textarea
         id="message"
@@ -54,19 +57,19 @@ import Section from "@/components/Section.astro";
         rows="4"
         required
         class="rounded-md border border-skin-hue/20 bg-white/10 px-3 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-skin-hue"
-      ></textarea>
+        placeholder={t('contact.message.placeholder')}></textarea>
     </div>
     <div data-netlify-recaptcha="true"></div>
     <button
       type="submit"
       id="submit-btn"
-      class="rounded-md border border-skin-hue/20 bg-skin-button-accent/20 px-10 py-2 text-xs font-medium text-skin-hue transition hover:bg-skin-button-accent"
+      class="rounded-md border border-skin-hue/20 bg-skin-button-accent/20 px-10 py-2 text-xs font-medium text-skin-hue transition hover:bg-skin-button-accent hover:text-skin-inverted"
     >
-      Send
+      {t('contact.submit')}
     </button>
 
     <p id="form-status" class="mt-4 hidden text-sm text-white">
-      Message sent! ✅
+      {t('contact.success')} ✅
     </p>
   </form>
 
@@ -77,27 +80,27 @@ import Section from "@/components/Section.astro";
       const myForm = event.target as HTMLFormElement;
       const formData = new FormData(myForm);
 
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
         body: new URLSearchParams(formData as any).toString(),
       })
         .then(() => {
-          console.log("Form successfully submitted");
-          const statusMessage = document.getElementById("form-status");
-          const submitButton = document.getElementById("submit-btn");
+          const statusMessage = document.getElementById('form-status');
+          const submitButton = document.getElementById('submit-btn');
           if (statusMessage && submitButton) {
-            submitButton.classList.add("hidden");
-            statusMessage.classList.remove("hidden");
-            statusMessage.textContent = "Message sent! ✅";
+            submitButton.classList.add('hidden');
+            statusMessage.classList.remove('hidden');
           }
 
           setTimeout(() => {
             if (statusMessage) {
-              statusMessage.classList.add("hidden");
+              statusMessage.classList.add('hidden');
             }
             if (submitButton) {
-              submitButton.classList.remove("hidden");
+              submitButton.classList.remove('hidden');
             }
             myForm.reset();
           }, 5000);
@@ -106,7 +109,7 @@ import Section from "@/components/Section.astro";
     };
 
     document
-      .querySelector("#contact-form")
-      ?.addEventListener("submit", handleSubmit as EventListener);
+      .querySelector('#contact-form')
+      ?.addEventListener('submit', handleSubmit as EventListener);
   </script>
 </Section>

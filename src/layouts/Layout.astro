@@ -1,13 +1,15 @@
 ---
-import "../globals.css";
-import CV from "@cv";
+import '@/globals.css';
+import { getCV, lang } from '@/i18n/utils';
 
-const title = "worldwidedev";
-const { image, summary, theme } = CV.basics;
+const title = 'worldwidedev';
+const {
+  basics: { image, summary, theme },
+} = getCV();
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang={lang} class="dark">
   <head>
     <meta charset="UTF-8" />
     <title>{title}</title>

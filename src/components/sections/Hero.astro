@@ -1,9 +1,10 @@
 ---
-import { basics, languages } from "@cv";
-import Section from "@/components/Section.astro";
-import { Icon } from "astro-icon/components";
-import { Image } from "astro:assets";
+import Section from '@/components/Section.astro';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import { getCV } from '@/i18n/utils';
 
+const { basics, languages } = getCV();
 const { firstname, name, label, image, profiles, email, location } = basics;
 ---
 

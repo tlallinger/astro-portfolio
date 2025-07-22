@@ -1,9 +1,11 @@
 ---
-import Section from "@/components/Section.astro";
-import photoPNG from "@/assets/photo.png?url";
-import photoJP2 from "@/assets/photo.jp2?url";
-import photoWebp from "@/assets/photo.webp?url";
-import { basics } from "@cv";
+import Section from '@/components/Section.astro';
+import photoPNG from '@/assets/photo.png?url';
+import photoJP2 from '@/assets/photo.jp2?url';
+import photoWebp from '@/assets/photo.webp?url';
+import { getCV } from '@/i18n/utils';
+
+const { basics } = getCV();
 
 const { firstname } = basics;
 ---

@@ -1,18 +1,22 @@
 ---
 import Section from '../Section.astro'
-import { work } from '@cv'
 import { Icon } from 'astro-icon/components'
+import { t, getCV, lang } from '@/i18n/utils';
+
+const { work } = getCV();
+const isExpanded = (work.length === 1)
+
 ---
 
-<Section className={Astro.props.className} title="Experience">
+<Section className={Astro.props.className} title={t('section.experience')} >
   <ul class="flex flex-col">
     {work.map(({ name, startDate, endDate, position, industry, highlights, responsibilities, achievements, url, skills, location, location_type }) => {
-      const startTime = new Date(startDate).toLocaleString('default', { month: 'long', year: 'numeric' })
-      const endTime = endDate != null ? new Date(endDate).toLocaleString('default', { month: 'long', year: 'numeric' }) : "Present"
+      const startTime = new Date(startDate).toLocaleString(lang, { month: 'long', year: 'numeric' })
+      const endTime = endDate != null ? new Date(endDate).toLocaleString(lang, { month: 'long', year: 'numeric' }) : t('timeline.present');
 
       return (
         <li class="relative">
-          <div data-expanded={(work.length === 1).toString()} class="group relative grid pb-1 transition-all sm:grid-cols-12 sm:gap-8 md:gap-6 lg:hover:!opacity-100 expand-container">
+          <div data-expanded={isExpanded.toString()} class="group relative grid pb-1 transition-all sm:grid-cols-12 sm:gap-8 md:gap-6 lg:hover:!opacity-100 expand-container">
             <header class="relative mt-1 text-xs font-semibold sm:col-span-2">
               <time datetime={startTime} data-title={startTime}>{startTime}</time> - <time datetime={endTime} data-title={endTime}>{endTime}</time>
             </header>
@@ -42,7 +46,7 @@ import { Icon } from 'astro-icon/components'
               <div class="mt-4   flex flex-col gap-4  text-sm">
                 {industry && (
                   <div class="flex gap-1">
-                    <h4>Industry: </h4>
+                    <h4>{t('experience.industry')}: </h4>
                     <span class="text-skin-muted">
                       {industry}
                     </span>
@@ -54,7 +58,7 @@ import { Icon } from 'astro-icon/components'
 
                   {highlights?.length > 0 && (
                     <div class="flex flex-col gap-1">
-                      <h4>Highlights:</h4>
+                      <h4>{t('experience.highlights')}:</h4>
                       <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                         {highlights.map(highlight => (
                           <li>{highlight}</li>
@@ -64,7 +68,7 @@ import { Icon } from 'astro-icon/components'
                   )}
                 {responsibilities?.length > 0 && (
                   <div class="flex flex-col gap-1">
-                    <h4>Responsibilities:</h4>
+                    <h4>{t('experience.responsibilities')}:</h4>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                       {responsibilities.map(responsibility => (
                         <li>{responsibility}</li>
@@ -75,7 +79,7 @@ import { Icon } from 'astro-icon/components'
 
                 {achievements?.length > 0 && (
                   <div class="flex flex-col gap-1">
-                    <h4>Achievements:</h4>
+                    <h4>{t('experience.achievements')}:</h4>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                       {achievements.map(achievement => (
                         <li>{achievement}</li>
@@ -83,10 +87,14 @@ import { Icon } from 'astro-icon/components'
                     </ul>
                   </div>
                 )}
-                </div>
+                 </div>
 
-                <button class="group/more w-fit cursor-pointer items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-all hover:text-skin-base flex expand-button">
-                  <span class="expand-text">Show {work.length === 1 ? 'less' : 'more'}</span>
+                <button 
+                  class="group/more w-fit cursor-pointer items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-all hover:text-skin-base flex expand-button"
+                  data-seeless={t('experience.seeLess')}
+                  data-seemore={t('experience.seeMore')}
+                >
+                  <span class="expand-text"></span>
                   <Icon name="ri:arrow-up-s-line" class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out group-data-[expanded=true]:rotate-180" width={24} height={24}></Icon>
                 </button>
 
@@ -100,7 +108,7 @@ import { Icon } from 'astro-icon/components'
                   )
                   }
                 </ul>
-)}
+) }
               </div>
             </div>
           </div>
@@ -110,14 +118,17 @@ import { Icon } from 'astro-icon/components'
   </ul>
 </Section>
 <script>
-  const expandButton = document.querySelectorAll('.expand-button');
+  const expandButtons = document.querySelectorAll('.expand-button');
 
-  expandButton.forEach(button => {
-    button.addEventListener('click', () => {
-      const container = button.closest<HTMLElement>('.expand-container')!;
-      container.dataset.expanded = container.dataset.expanded === 'true' ? 'false' : 'true';
+  expandButtons.forEach(btn => {
+    const button = btn as HTMLButtonElement;
+    const container = button.closest<HTMLElement>('.expand-container')!;
       const expandText = button.querySelector('.expand-text')!;
-      expandText.innerHTML = container.dataset.expanded === 'true' ? 'Show less' : 'Show more'
+      expandText.innerHTML = (container.dataset.expanded === 'true' ? button.dataset.seeless : button.dataset.seemore) || '';
+
+      button.addEventListener('click', () => {
+      container.dataset.expanded = container.dataset.expanded === 'true' ? 'false' : 'true';
+      expandText.innerHTML = (container.dataset.expanded === 'true' ? button.dataset.seeless : button.dataset.seemore) || '';
     });
   });
 </script>
