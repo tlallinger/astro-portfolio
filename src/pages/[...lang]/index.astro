@@ -7,19 +7,24 @@ import About from '@/components/sections/About.astro';
 import Photo from '@/components/Photo.astro';
 import Contact from '@/components/sections/Contact.astro';
 import { Icon } from 'astro-icon/components';
-import { changeLanguage, t } from '@/i18n/utils';
+import { changeLanguage, t, lang } from '@/i18n/utils';
 import { languages } from '@/i18n/ui';
 
 export function getStaticPaths() {
-  return [{ params: { lang: 'en' } }, { params: { lang: 'de' } }];
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'de' } },
+    { params: { lang: undefined } },
+  ];
+}
+if (Astro.params.lang) {
+  changeLanguage(Astro.params.lang);
 }
 
-changeLanguage(Astro.params.lang);
-
-const nextLang = Astro.params.lang === 'en' ? 'de' : 'en';
+const nextLang = lang === 'en' ? 'de' : 'en';
 ---
 
-<Layout lang={Astro.params.lang}>
+<Layout lang={lang}>
   <main
     id="scrollable-main"
     class="scroll-smooth lg:h-screen lg:snap-y lg:overflow-y-scroll"
