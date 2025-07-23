@@ -10,7 +10,7 @@ export default <CV>{
     image: '/avatar.png',
     email: 'hello@world-wide.dev',
     summary:
-      'I am a self-taught software developer with a strong passion for clean and readable code, as well as expertise in TypeScript-based development.<br/> My proactive attitude and adaptability allow me to easily learn and implement new technologies, always prioritising readability, maintainability, and best practices.',
+      'I am a software developer with a strong passion for clean and readable code, as well as expertise in front- and backend development.<br/> My proactive attitude and adaptability allow me to easily learn and implement new technologies, always prioritising readability, maintainability, and best practices.',
     theme: 'green',
     profiles: [
       {

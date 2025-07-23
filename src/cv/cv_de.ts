@@ -10,7 +10,7 @@ export default <CV>{
     image: '/avatar.png',
     email: 'hello@world-wide.dev',
     summary:
-      'Ich bin ein autodidaktischer Softwareentwickler mit einer ausgeprägten Leidenschaft für sauberen und gut lesbaren Code sowie fundierter Erfahrung in der Entwicklung mit TypeScript. Durch meine proaktive Arbeitsweise und Anpassungsfähigkeit lerne ich neue Technologien schnell und setze sie effizient ein – stets mit Fokus auf Lesbarkeit, Wartbarkeit und Best Practices.',
+      'Ich bin ein Softwareentwickler mit einer ausgeprägten Leidenschaft für sauberen und gut lesbaren Code sowie fundierter Erfahrung in der Front- und Backend Entwicklung. Durch meine proaktive Arbeitsweise und Anpassungsfähigkeit lerne ich neue Technologien schnell und setze sie effizient ein – stets mit Fokus auf Lesbarkeit, Wartbarkeit und Best Practices.',
     theme: 'green',
     profiles: [
       {

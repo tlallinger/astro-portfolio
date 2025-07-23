@@ -1,53 +1,58 @@
-export type CV = {
+export interface CV {
   basics: Basics;
-  work: Work[];
-  skills: Skill[];
-  languages: Language[];
-};
+  work: Array<Work>;
+  skills: Array<Skills>;
+  languages: Array<Languages>;
+}
 
-type Skill = {
-  name: string;
-  level: string;
-  icon?: string;
-  keywords?: string[];
-};
-
-type Language = {
-  language: string;
-  fluency: string;
-};
-
-type Basics = {
+interface Basics {
   greet: string;
   firstname: string;
   name: string;
+  theme: string;
   label: string;
-  location: string;
   image: string;
   email: string;
   summary: string;
-  theme: string;
-  profiles: Profile[];
-};
+  profiles: Array<Profiles>;
+}
 
-type Profile = {
-  network: string;
+interface Profiles {
   icon: string;
+  network: string;
   username: string;
   url: string;
-};
+}
 
-type Work = {
+interface Work {
   name: string;
   position: string;
   location_type: string;
   location: string;
-  url: string;
-  startDate: string;
-  endDate: string | null;
-  industry: string;
-  highlights: string[];
-  responsibilities: string[];
-  achievements: string[];
+  responsibilities: Array<string>;
+  achievements: Array<string>;
   skills: Record<string, string>;
-};
+  url: string;
+  startDate: DateStr;
+  endDate: DateStr | null;
+  industry: string;
+  highlights: Highlight;
+}
+
+type DateStr = `${string}-${string}-${string}`;
+
+interface Skills {
+  icon: string;
+  name: string;
+  level: string;
+  keywords: Array<string>;
+}
+
+interface Languages {
+  language: Language;
+  fluency: string;
+}
+
+type Language = "English" | "German" | string;
+
+type Highlight = Array<String>;
