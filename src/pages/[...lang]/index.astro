@@ -78,44 +78,48 @@ const nextLang = lang === 'en' ? 'de' : 'en';
     <!-- Footer -->
     <footer
       id="sticky-footer"
-      class="relative bottom-0 left-0 flex w-full flex-col-reverse gap-4 border-t border-white/10 p-4 text-sm backdrop-blur-sm transition-transform duration-300 lg:fixed lg:flex-row lg:px-10"
+      class="relative bottom-0 left-0 w-full gap-4 border-t border-white/10 p-4 text-sm backdrop-blur-sm transition-transform duration-300 lg:fixed lg:flex lg:flex-row lg:justify-between lg:px-10"
       style="z-index: 50"
     >
-      <span class="text-skin-muted">
-        © {new Date().getFullYear()} Thomas Lallinger
-      </span>
-      <a
-        href={`/${nextLang}`}
-        aria-label={languages[nextLang]}
-        lang={nextLang}
-        hreflang={nextLang}
-        class="w-fit rounded-md border border-skin-hue/20 bg-skin-button-accent/20 px-2 text-xs text-skin-hue transition hover:bg-skin-button-accent hover:text-skin-inverted"
-      >
-        {languages[nextLang]}
-      </a>
+      <span class="flex w-full justify-between">
+        <a
+          href={`/${nextLang}`}
+          aria-label={languages[nextLang]}
+          lang={nextLang}
+          hreflang={nextLang}
+          class="w-fit rounded-md border border-skin-hue/20 bg-skin-button-accent/20 px-2 text-xs text-skin-hue transition hover:bg-skin-button-accent hover:text-skin-inverted"
+        >
+          {languages[nextLang]}
+        </a>
 
-      <!-- Spacer -->
-      <span class="lg:flex-1"></span>
-      <a
-        href={`/${Astro.params.lang}/impressum`}
-        class="rounded-md px-2 text-xs text-skin-hue transition hover:text-skin-inverted"
-      >
-        {t('impressum.title')}
-      </a>
-      <a
-        href={`/${Astro.params.lang}/dsgvo`}
-        class="rounded-md px-2 text-xs text-skin-hue transition hover:text-skin-inverted"
-      >
-        {t('dsgvo.title')}
-      </a>
+        <div>
+          <a
+            href={`/${Astro.params.lang}/impressum`}
+            class="rounded-md px-2 text-xs text-skin-hue transition hover:text-skin-inverted"
+          >
+            {t('impressum.title')}
+          </a>
+          <a
+            href={`/${Astro.params.lang}/dsgvo`}
+            class="rounded-md px-2 text-xs text-skin-hue transition hover:text-skin-inverted"
+          >
+            {t('dsgvo.title')}
+          </a>
+        </div>
+      </span>
+      <div class="order-first mt-2 text-nowrap text-skin-muted lg:m-0">
+        © {new Date().getFullYear()} Thomas Lallinger
+      </div>
     </footer>
   </main>
 
   <script is:inline>
+    const mainEl = document.getElementById('scrollable-main');
+
     // Scroll icon visibility logic and click event
-    window.addEventListener('scroll', function () {
+    mainEl.addEventListener('scroll', function () {
       const icon = document.querySelector('.scroll-icon');
-      if (window.scrollY > 0) {
+      if (mainEl.scrollTop > 0) {
         icon?.classList.add('hidden-icon');
       } else {
         icon?.classList.remove('hidden-icon');
@@ -139,14 +143,13 @@ const nextLang = lang === 'en' ? 'de' : 'en';
 
     // Sticky footer logic
     const footer = document.getElementById('sticky-footer');
-    const mainEl = document.getElementById('scrollable-main');
 
     function onScroll() {
       const currentScroll = mainEl.scrollTop;
       const docHeight = mainEl.scrollHeight;
-      const halfHeight = docHeight / 2;
+      const footerShowThreshold = docHeight / 1.5;
 
-      if (currentScroll < halfHeight) {
+      if (currentScroll < footerShowThreshold) {
         footer.style.transform = 'translateY(100%)';
       } else {
         footer.style.transform = 'translateY(0)';
