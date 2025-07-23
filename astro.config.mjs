@@ -1,7 +1,8 @@
 // @ts-check
-import { defineConfig, passthroughImageService } from "astro/config";
-import tailwind from "@astrojs/tailwind";
-import astroIcon from "astro-icon";
+import { defineConfig, passthroughImageService } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
+import astroIcon from 'astro-icon';
+import { defaultLang } from './src/i18n/ui';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,10 +13,17 @@ export default defineConfig({
     tailwind(),
     astroIcon({
       include: {
-        mdi: ["*"],
-        ri: ["*"],
-        "simple-icons": ["*"],
+        mdi: ['*'],
+        ri: ['*'],
+        'simple-icons': ['*'],
       },
     }),
   ],
+  i18n: {
+    locales: ['de', 'en'],
+    defaultLocale: defaultLang,
+    routing: {
+      prefixDefaultLocale: true,
+    },
+  },
 });

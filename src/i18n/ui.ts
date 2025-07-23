@@ -3,13 +3,14 @@ export const languages = {
   de: 'Deutsch',
 };
 
-export const defaultLang: keyof typeof languages = 'en';
+export const defaultLang: keyof typeof languages = 'de';
 
 export const ui: Record<keyof typeof languages, Record<string, string>> = {
   en: {
     'section.about': 'About',
     'section.experience': 'Experience',
-    'section.contact': 'Contact',
+    'section.contact': 'Are you ready to bring your ideas to life?',
+    'section.contact.subtitle': 'Together, we turn innovative projects into reality—from concept to launch.',
     'timeline.present': 'Present',
     'experience.industry': 'Industry',
     'experience.highlights': 'Highlights',
@@ -17,6 +18,7 @@ export const ui: Record<keyof typeof languages, Record<string, string>> = {
     'experience.achievements': 'Achievements',
     'experience.seeMore': 'See more',
     'experience.seeLess': 'See less',
+    'contact.button': 'Get in touch',
     'contact.name': 'Name',
     'contact.name.placeholder': 'Enter your name',
     'contact.email': 'Email',
@@ -28,11 +30,14 @@ export const ui: Record<keyof typeof languages, Record<string, string>> = {
     'contact.error': 'Error sending message. Please try again later.',
     'contact.required': 'This field is required.',
     'contact.invalidEmail': 'Please enter a valid email address.',
+    'impressum.title': 'Imprint',
+    'dsgvo.title': 'Privacy Policy',
   },
   de: {
     'section.about': 'Über mich',
     'section.experience': 'Erfahrung',
-    'section.contact': 'Kontakt',
+    'section.contact': 'Bereit, Ihre Vision Wirklichkeit werden zu lassen?',
+    'section.contact.subtitle': 'Gemeinsam realisieren wir innovative Projekte von der Konzeption bis zum Launch.',
     'timeline.present': 'Heute',
     'experience.industry': 'Branche',
     'experience.highlights': 'Highlights',
@@ -40,6 +45,7 @@ export const ui: Record<keyof typeof languages, Record<string, string>> = {
     'experience.achievements': 'Erfolge',
     'experience.seeMore': 'Mehr anzeigen',
     'experience.seeLess': 'Weniger anzeigen',
+    'contact.button': 'Schreib mir',
     'contact.name': 'Name',
     'contact.name.placeholder': 'Namen eingeben',
     'contact.email': 'E-Mail',
@@ -51,5 +57,7 @@ export const ui: Record<keyof typeof languages, Record<string, string>> = {
     'contact.error': 'Fehler beim Senden der Nachricht. Bitte versuche es später erneut.',
     'contact.required': 'Dieses Feld ist erforderlich.',
     'contact.invalidEmail': 'Bitte gib eine gültige E-Mail-Adresse ein.',
+    'impressum.title': 'Impressum',
+    'dsgvo.title': 'Datenschutz',
   }
 } as const;

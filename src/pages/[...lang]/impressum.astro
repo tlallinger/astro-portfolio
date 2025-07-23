@@ -1,0 +1,43 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'de' } }];
+}
+
+import { getCV } from '@/i18n/utils';
+
+const { basics } = getCV();
+---
+
+<Layout lang={Astro.params.lang} hasBackBtn={true}>
+  <div
+    class="flex h-screen flex-col items-center justify-center gap-4 p-8 text-white"
+  >
+    <div class="mb-4 text-center">
+      <div class="mb-2 text-4xl text-skin-hue">Impressum</div>
+      <p>
+        Thomas Lallinger<br />
+        Software Entwickler<br />
+        Carl-Riedl-Stra&szlig;e 21A<br />
+        84559 Kraiburg am Inn
+      </p>
+    </div>
+    <div class="mb-4 text-center">
+      <div class="mb-2 text-2xl text-skin-hue">Kontakt</div>
+      <p>
+        Telefon: +49 157 31153178<br />
+        E-Mail: {basics.email}
+      </p>
+    </div>
+    <div class="mb-4 text-center">
+      <div class="mb-2 text-2xl text-skin-hue">
+        Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle
+      </div>
+      <p>
+        Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren
+        vor einer Verbraucherschlichtungsstelle teilzunehmen.
+      </p>
+    </div>
+  </div>
+</Layout>

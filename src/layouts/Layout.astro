@@ -1,11 +1,15 @@
 ---
 import '@/globals.css';
 import { getCV, lang } from '@/i18n/utils';
+import FloatingBackButton from '@/components/FloatingBackButton.astro';
 
 const title = 'worldwidedev';
 const {
   basics: { image, summary, theme },
 } = getCV();
+
+// Props hasBackBtn
+const hasBackBtn = Astro.props.hasBackBtn ?? false;
 ---
 
 <!doctype html>
@@ -24,6 +28,8 @@ const {
     <meta name="referrer" content="no-referrer" />
   </head>
   <body data-theme={theme} class="relative bg-skin-fill font-sans">
+    {hasBackBtn && <FloatingBackButton />}
+
     <div class="absolute top-0 -z-10 h-full w-full">
       <div
         class="absolute bottom-auto left-[20%] right-auto top-0 h-[200px] w-[200px] -translate-x-[30%] translate-y-[20%] rounded-full bg-skin-hue/10 blur-[80px] invert-0 dark:bg-white/5"

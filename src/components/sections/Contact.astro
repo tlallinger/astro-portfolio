@@ -3,13 +3,17 @@ import Section from '@/components/Section.astro';
 import { t } from '@/i18n/utils';
 ---
 
-<Section className={Astro.props.className} title={t('section.contact')}>
+<Section
+  className={Astro.props.className}
+  title={t('section.contact')}
+  subtitle={t('section.contact.subtitle')}
+>
   <form
     name="contact"
     data-netlify="true"
     netlify-honeypot="bot-field"
     data-netlify-recaptcha="true"
-    class="mx-auto w-screen max-w-2xl space-y-6 rounded-xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur-md"
+    class="mx-auto w-full max-w-2xl space-y-6 rounded-xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur-md"
     id="contact-form"
   >
     <input type="hidden" name="form-name" value="contact" />
@@ -72,44 +76,44 @@ import { t } from '@/i18n/utils';
       {t('contact.success')} ✅
     </p>
   </form>
-
-  <script>
-    const handleSubmit = (event: Event) => {
-      event.preventDefault();
-
-      const myForm = event.target as HTMLFormElement;
-      const formData = new FormData(myForm);
-
-      fetch('/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams(formData as any).toString(),
-      })
-        .then(() => {
-          const statusMessage = document.getElementById('form-status');
-          const submitButton = document.getElementById('submit-btn');
-          if (statusMessage && submitButton) {
-            submitButton.classList.add('hidden');
-            statusMessage.classList.remove('hidden');
-          }
-
-          setTimeout(() => {
-            if (statusMessage) {
-              statusMessage.classList.add('hidden');
-            }
-            if (submitButton) {
-              submitButton.classList.remove('hidden');
-            }
-            myForm.reset();
-          }, 5000);
-        })
-        .catch((error) => alert(error));
-    };
-
-    document
-      .querySelector('#contact-form')
-      ?.addEventListener('submit', handleSubmit as EventListener);
-  </script>
 </Section>
+
+<script>
+  const handleSubmit = (event: Event) => {
+    event.preventDefault();
+
+    const myForm = event.target as HTMLFormElement;
+    const formData = new FormData(myForm);
+
+    fetch('/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams(formData as any).toString(),
+    })
+      .then(() => {
+        const statusMessage = document.getElementById('form-status');
+        const submitButton = document.getElementById('submit-btn');
+        if (statusMessage && submitButton) {
+          submitButton.classList.add('hidden');
+          statusMessage.classList.remove('hidden');
+        }
+
+        setTimeout(() => {
+          if (statusMessage) {
+            statusMessage.classList.add('hidden');
+          }
+          if (submitButton) {
+            submitButton.classList.remove('hidden');
+          }
+          myForm.reset();
+        }, 5000);
+      })
+      .catch((error) => alert(error));
+  };
+
+  document
+    .querySelector('#contact-form')
+    ?.addEventListener('submit', handleSubmit as EventListener);
+</script>

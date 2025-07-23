@@ -23,12 +23,8 @@ const isExpanded = (work.length === 1)
             <div class="relative flex flex-col pb-6 before:-ml-6 sm:col-span-10 before:w-px before:absolute before:bg-skin-muted before:h-full before:mt-2">
               <h3>
                 <div class="inline-flex items-center text-lg leading-tight group/link focus-visible:text-amber-500" aria-label="{position} - {company}">
-                  <span>{position}<span>@</span>
-                  {url ? (
-                    <a class="text-skin-hue" href={url} title={name} target="_blank">{name}</a>
-                  ) : (
-                    <span>{name}</span>
-                  )}
+                  <span>{position}<span class="ml-1">@</span>
+                  {url ? (<a class="text-skin-hue" href={url} title={name} target="_blank">{name}</a>) : (<span>{name}</span>)}
                   {url &&
                     <span class="inline-block text-skin-hue">
                       <Icon name="ri:arrow-up-line" class="inline-block w-4 h-4 ml-1 transition-transform translate-y-px shrink-0 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none rotate-45" aria-hidden="true">

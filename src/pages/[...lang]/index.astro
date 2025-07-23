@@ -1,0 +1,275 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+import Hero from '@/components/sections/Hero.astro';
+import Experience from '@/components/sections/Experience.astro';
+import About from '@/components/sections/About.astro';
+import Photo from '@/components/Photo.astro';
+import Contact from '@/components/sections/Contact.astro';
+import { Icon } from 'astro-icon/components';
+import { changeLanguage, t } from '@/i18n/utils';
+import { languages } from '@/i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'de' } }];
+}
+
+changeLanguage(Astro.params.lang);
+
+const nextLang = Astro.params.lang === 'en' ? 'de' : 'en';
+---
+
+<Layout lang={Astro.params.lang}>
+  <main
+    id="scrollable-main"
+    class="scroll-smooth lg:h-screen lg:snap-y lg:overflow-y-scroll"
+  >
+    <div
+      id="section-1"
+      class="relative mx-auto grid h-full max-w-7xl snap-start gap-12 p-8 max-sm:py-16 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24"
+    >
+      <div
+        class="slide-enter-content col-span-6 my-auto space-y-12 lg:col-span-3"
+      >
+        <About />
+      </div>
+      <div
+        class="slide-enter order-first col-span-6 my-auto space-y-6 ease-in lg:order-last lg:col-span-3"
+      >
+        <Photo />
+      </div>
+      <div
+        class="xs:hidden scroll-icon absolute bottom-4 left-1/2 -translate-x-1/2 transform transition-opacity"
+      >
+        <Icon
+          name="mdi:arrow-down-circle"
+          class="animate-bounce text-skin-muted"
+          size={40}
+        />
+      </div>
+    </div>
+    <div
+      id="section-2"
+      class="relative mx-auto grid max-w-7xl gap-12 p-8 max-sm:py-16 lg:min-h-screen lg:grid-cols-6 lg:p-16 xl:gap-24"
+    >
+      <!-- Sticky Hero (left) -->
+      <div class="lg:sticky lg:top-20 lg:col-span-2 lg:self-start">
+        <Hero />
+      </div>
+
+      <!-- Scrollable Experience (right) -->
+      <div class="pr-2 lg:col-span-4">
+        <Experience />
+      </div>
+    </div>
+    <div
+      id="section-3"
+      class="slide-enter-content flex h-screen snap-start items-center justify-center px-4"
+    >
+      <div class="mx-4">
+        <Contact />
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer
+      id="sticky-footer"
+      class="absolute bottom-0 left-0 flex w-full flex-col-reverse gap-4 border-t border-white/10 p-4 text-sm backdrop-blur-sm transition-transform duration-300 lg:fixed lg:flex-row lg:px-10"
+      style="z-index: 50"
+    >
+      <span class="text-skin-muted">
+        © {new Date().getFullYear()} Thomas Lallinger
+      </span>
+      <a
+        href={`/${nextLang}`}
+        aria-label={languages[nextLang]}
+        lang={nextLang}
+        hreflang={nextLang}
+        class="w-fit rounded-md border border-skin-hue/20 bg-skin-button-accent/20 px-2 text-xs text-skin-hue transition hover:bg-skin-button-accent hover:text-skin-inverted"
+      >
+        {languages[nextLang]}
+      </a>
+
+      <!-- Spacer -->
+      <span class="lg:flex-1"></span>
+      <a
+        href={`/${Astro.params.lang}/impressum`}
+        class="rounded-md px-2 text-xs text-skin-hue transition hover:text-skin-inverted"
+      >
+        {t('impressum.title')}
+      </a>
+      <a
+        href={`/${Astro.params.lang}/dsgvo`}
+        class="rounded-md px-2 text-xs text-skin-hue transition hover:text-skin-inverted"
+      >
+        {t('dsgvo.title')}
+      </a>
+    </footer>
+  </main>
+
+  <script is:inline>
+    // Scroll icon visibility logic and click event
+    window.addEventListener('scroll', function () {
+      const icon = document.querySelector('.scroll-icon');
+      if (window.scrollY > 0) {
+        icon?.classList.add('hidden-icon');
+      } else {
+        icon?.classList.remove('hidden-icon');
+      }
+    });
+    document
+      ?.querySelector('.scroll-icon')
+      ?.addEventListener('click', function () {
+        const section = document.getElementById('section-2');
+        section?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+    // Change language button logic
+    document
+      .getElementById('change-lang')
+      ?.addEventListener('click', function () {
+        // get text content of the button
+        const currentLang = this.textContent?.trim();
+        window.location.href = `/${currentLang}`;
+      });
+
+    // Sticky footer logic
+    const footer = document.getElementById('sticky-footer');
+    const mainEl = document.getElementById('scrollable-main');
+
+    function onScroll() {
+      const currentScroll = mainEl.scrollTop;
+      const docHeight = mainEl.scrollHeight;
+      const halfHeight = docHeight / 2;
+
+      if (currentScroll < halfHeight) {
+        footer.style.transform = 'translateY(100%)';
+      } else {
+        footer.style.transform = 'translateY(0)';
+      }
+    }
+
+    mainEl?.addEventListener('scroll', onScroll);
+
+    onScroll();
+  </script>
+
+  <style>
+    :global(.dark) {
+      color-scheme: dark;
+    }
+    .scroll-icon {
+      transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+      opacity: 1;
+      visibility: visible;
+      cursor: pointer;
+    }
+
+    .hidden-icon {
+      opacity: 0;
+      visibility: hidden;
+    }
+  </style>
+
+  <style is:global>
+    * {
+      scrollbar-color: var(--color-button-muted) var(--color-fill);
+    }
+
+    @page {
+      size: auto;
+      margin: 0mm;
+    }
+    main {
+      margin: auto;
+      width: 100%;
+    }
+
+    @keyframes slide-enter {
+      0% {
+        transform: translateY(10px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .slide-enter,
+      .slide-enter-content > *:not(:has(.table-of-contents)) {
+        --enter-stage: 0;
+        --enter-step: 400ms;
+        --enter-initial: 0ms;
+        animation: slide-enter 1s both 1;
+        animation-delay: calc(
+          var(--enter-initial) + var(--enter-stage) * var(--enter-step)
+        );
+      }
+
+      .slide-enter-content > *:nth-child(1) {
+        --enter-stage: 1 !important;
+      }
+      .slide-enter-content > *:nth-child(2) {
+        --enter-stage: 2 !important;
+      }
+      .slide-enter-content > *:nth-child(3) {
+        --enter-stage: 3 !important;
+      }
+      .slide-enter-content > *:nth-child(4) {
+        --enter-stage: 4 !important;
+      }
+      .slide-enter-content > *:nth-child(5) {
+        --enter-stage: 5 !important;
+      }
+      .slide-enter-content > *:nth-child(6) {
+        --enter-stage: 6 !important;
+      }
+      .slide-enter-content > *:nth-child(7) {
+        --enter-stage: 7 !important;
+      }
+      .slide-enter-content > *:nth-child(8) {
+        --enter-stage: 8 !important;
+      }
+      .slide-enter-content > *:nth-child(9) {
+        --enter-stage: 9 !important;
+      }
+      .slide-enter-content > *:nth-child(10) {
+        --enter-stage: 10 !important;
+      }
+      .slide-enter-content > *:nth-child(11) {
+        --enter-stage: 11 !important;
+      }
+      .slide-enter-content > *:nth-child(12) {
+        --enter-stage: 12 !important;
+      }
+      .slide-enter-content > *:nth-child(13) {
+        --enter-stage: 13 !important;
+      }
+      .slide-enter-content > *:nth-child(14) {
+        --enter-stage: 14 !important;
+      }
+      .slide-enter-content > *:nth-child(15) {
+        --enter-stage: 15 !important;
+      }
+      .slide-enter-content > *:nth-child(16) {
+        --enter-stage: 16 !important;
+      }
+      .slide-enter-content > *:nth-child(17) {
+        --enter-stage: 17 !important;
+      }
+      .slide-enter-content > *:nth-child(18) {
+        --enter-stage: 18 !important;
+      }
+      .slide-enter-content > *:nth-child(19) {
+        --enter-stage: 19 !important;
+      }
+      .slide-enter-content > *:nth-child(20) {
+        --enter-stage: 20 !important;
+      }
+    }
+  </style>
+</Layout>

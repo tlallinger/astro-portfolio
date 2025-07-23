@@ -7,7 +7,13 @@ function getLangFromUrl(url: URL) {
   return defaultLang;
 }
 
-export const lang: keyof typeof ui = defaultLang;
+export let lang: keyof typeof ui = defaultLang;
+
+export function changeLanguage(newLang: string) {
+  if (newLang in ui) {
+    lang = newLang as keyof typeof ui;
+  }
+}
 
 export function t(key: keyof (typeof ui)[typeof defaultLang]) {
   return ui[lang][key] || ui[defaultLang][key];
@@ -15,5 +21,5 @@ export function t(key: keyof (typeof ui)[typeof defaultLang]) {
 
 export function getCV() {
   const cvs = import.meta.glob<CV>('../cv/cv_*.ts', { eager: true, import: 'default' });
-  return cvs[`../cv/cv_${lang}.ts`] || cvs[`../cv/cv_${defaultLang}.ts`];
+  return cvs[`../cv/cv_${lang}.ts`];
 }

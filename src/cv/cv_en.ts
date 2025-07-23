@@ -10,7 +10,7 @@ export default <CV>{
     image: '/avatar.png',
     email: 'hello@world-wide.dev',
     summary:
-      'I am a software developer with a passion for web technologies. I have experience in both frontend and backend development, and I am always eager to learn new things.',
+      'I am a self-taught software developer with a strong passion for clean and readable code, as well as expertise in TypeScript-based development.<br/> My proactive attitude and adaptability allow me to easily learn and implement new technologies, always prioritising readability, maintainability, and best practices.',
     theme: 'green',
     profiles: [
       {
@@ -44,11 +44,12 @@ export default <CV>{
         'Mentored junior developers and new team members during onboarding, providing hands-on guidance and continuous support to foster their technical growth and integration into the team.',
         'Conducted code reviews, offering constructive feedback and ensuring adherence to coding standards.',
         'Responsible for frontend tooling and its configurations.',
-        'Collaborated closely with IT Security to identify, assess, and promptly remediate code vulnerabilities using SonarQube; proactively enhanced security practices by developing custom ESLint rules.',
+        'Collaborated closely with IT Security to identify, assess, and promptly remediate code vulnerabilities using SonarQube.',
       ],
       achievements: [
         'Developed and implemented a microfrontend architecture using Lerna to improve modularity and scalability, enabling the simultaneous use of different frameworks and versions.',
         'Successfully led the integration of new technologies and major refactorings, resulting in a more than 30% reduction in build time, and increased developer experience and productivity.',
+
       ],
       skills: {
         TypeScript: 'simple-icons:typescript',
@@ -155,18 +156,6 @@ export default <CV>{
       icon: 'simple-icons:vite',
       level: 'Intermediate',
       keywords: ['Web Development', 'Frontend', 'Build Tool'],
-    },
-    {
-      name: 'WordPress',
-      icon: 'ri:wordpress-fill',
-      level: 'Intermediate',
-      keywords: ['PHP', 'Fullstack', 'Frontend'],
-    },
-    {
-      name: 'Golang',
-      icon: 'simple-icons:go',
-      level: 'Beginner',
-      keywords: ['Backend', 'Cloud Service'],
     },
     {
       name: 'Astro',

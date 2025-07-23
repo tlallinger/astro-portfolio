@@ -1,12 +1,13 @@
 ---
 import { getCV } from '@/i18n/utils';
+import { t } from '@/i18n/utils';
 
 const { basics } = getCV();
 ---
 
 <div class="space-y-5 text-center lg:text-left">
   <div class="space-y-5">
-    <span class="text-7xl">{basics.label}</span>
+    <span class="text-7xl xl:text-nowrap">{basics.label}</span>
     <h1 class="font-mono text-4xl">
       <div>{basics.greet}</div>
       <span class="text-5xl text-skin-hue">
@@ -14,7 +15,22 @@ const { basics } = getCV();
       </span>
     </h1>
   </div>
-  <p class="font-mono opacity-75">
-    {basics.summary}
-  </p>
+  <p class="gap-4 font-mono leading-relaxed" set:html={basics.summary} />
+  <div class="mt-6 flex justify-end">
+    <button
+      id="contact-button"
+      class="rounded-md border border-skin-hue/20 bg-skin-button-accent/5 px-10 py-2 font-medium text-skin-hue transition hover:bg-skin-button-accent/20 hover:text-skin-inverted"
+    >
+      {t('contact.button')}
+    </button>
+  </div>
 </div>
+
+<script>
+  document
+    .getElementById('contact-button')
+    ?.addEventListener('click', function () {
+      const section = document.getElementById('section-3');
+      section?.scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
