@@ -44,7 +44,7 @@ const nextLang = lang === 'en' ? 'de' : 'en';
         <Photo />
       </div>
       <div
-        class="xs:hidden scroll-icon absolute bottom-4 left-1/2 -translate-x-1/2 transform transition-opacity"
+        class="scroll-icon absolute bottom-4 left-1/2 hidden -translate-x-1/2 transform transition-opacity lg:block"
       >
         <Icon
           name="mdi:arrow-down-circle"
@@ -55,7 +55,7 @@ const nextLang = lang === 'en' ? 'de' : 'en';
     </div>
     <div
       id="section-2"
-      class="relative mx-auto grid max-w-7xl gap-12 p-8 max-sm:py-16 lg:min-h-screen lg:grid-cols-6 lg:p-16 xl:gap-24"
+      class="relative mx-auto grid max-w-7xl snap-start gap-12 p-8 max-sm:py-16 lg:min-h-screen lg:grid-cols-6 lg:p-16 xl:gap-24"
     >
       <!-- Sticky Hero (left) -->
       <div class="lg:sticky lg:top-20 lg:col-span-2 lg:self-start">
@@ -154,6 +154,28 @@ const nextLang = lang === 'en' ? 'de' : 'en';
       } else {
         footer.style.transform = 'translateY(0)';
       }
+
+      // About section fade out logic
+      const pxFromTop = mainEl.scrollTop;
+
+      const aboutHeader = document.getElementById('about-header');
+      if (aboutHeader) {
+        const shouldStick = pxFromTop > 1;
+        aboutHeader.classList.toggle('lg:sticky', shouldStick);
+        aboutHeader.classList.toggle('lg:top-48', shouldStick);
+      }
+
+      const fadeElements = [
+        { el: document.getElementById('about-summary'), factor: 100 },
+        { el: document.getElementById('photo-container'), factor: 100 },
+        { el: document.getElementById('contact-button'), factor: 300 },
+      ];
+
+      fadeElements.forEach(({ el, factor }) => {
+        if (el) {
+          el.style.opacity = Math.max(0, 1 - pxFromTop / factor).toString();
+        }
+      });
     }
 
     mainEl?.addEventListener('scroll', onScroll);
@@ -196,7 +218,7 @@ const nextLang = lang === 'en' ? 'de' : 'en';
 
     @keyframes slide-enter {
       0% {
-        transform: translateY(10px);
+        transform: translateY(100px);
         opacity: 0;
       }
 

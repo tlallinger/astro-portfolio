@@ -6,16 +6,20 @@ const { basics } = getCV();
 ---
 
 <div class="space-y-5 text-center lg:text-left">
-  <div class="space-y-5">
+  <div id="about-header" class="space-y-5">
     <span class="text-7xl xl:text-nowrap">{basics.label}</span>
-    <h1 class="font-mono text-4xl">
+    <div class="font-mono text-4xl">
       <div>{basics.greet}</div>
       <span class="text-5xl text-skin-hue">
         {basics.firstname}<span class="text-skin-base">.</span>
       </span>
-    </h1>
+    </div>
   </div>
-  <p class="gap-4 font-mono leading-relaxed" set:html={basics.summary} />
+  <p
+    id="about-summary"
+    class="gap-4 font-mono leading-relaxed"
+    set:html={basics.summary}
+  />
   <div class="mt-6 flex justify-end">
     <button
       id="contact-button"
@@ -26,7 +30,7 @@ const { basics } = getCV();
   </div>
 </div>
 
-<script>
+<script is:inline>
   document
     .getElementById('contact-button')
     ?.addEventListener('click', function () {
