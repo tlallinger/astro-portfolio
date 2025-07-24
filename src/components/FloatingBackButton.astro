@@ -1,8 +1,13 @@
 ---
-import { Icon } from 'astro-icon/components'; // If you use astro-icon, else swap out for an SVG inline.
+import { Icon } from 'astro-icon/components';
+import { lang } from '@/i18n/utils';
 ---
 
-<a href="/" class="fixed left-6 top-6 text-skin-hue" aria-label="Back to home">
+<a
+  href={`/${lang}`}
+  class="fixed left-6 top-6 rounded-2xl bg-skin-fill text-skin-hue"
+  aria-label="Back to home"
+>
   <Icon
     name="mdi:arrow-left-circle"
     class="text-4xl transition-transform duration-200 group-hover:text-6xl"

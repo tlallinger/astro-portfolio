@@ -94,13 +94,13 @@ const nextLang = lang === 'en' ? 'de' : 'en';
 
         <div>
           <a
-            href={`/${Astro.params.lang}/impressum`}
+            href={`/${lang}/impressum`}
             class="rounded-md px-2 text-xs text-skin-hue transition hover:text-skin-inverted"
           >
             {t('impressum.title')}
           </a>
           <a
-            href={`/${Astro.params.lang}/dsgvo`}
+            href={`/${lang}/dsgvo`}
             class="rounded-md px-2 text-xs text-skin-hue transition hover:text-skin-inverted"
           >
             {t('dsgvo.title')}
