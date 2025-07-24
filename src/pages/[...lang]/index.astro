@@ -30,7 +30,7 @@ const nextLang = lang === 'en' ? 'de' : 'en';
     class="scroll-smooth lg:h-screen lg:snap-y lg:overflow-y-scroll"
   >
     <div
-      id="section-1"
+      id="section-landing"
       class="relative mx-auto grid h-full max-w-7xl snap-start gap-12 p-8 max-sm:py-16 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24"
     >
       <div
@@ -54,7 +54,7 @@ const nextLang = lang === 'en' ? 'de' : 'en';
       </div>
     </div>
     <div
-      id="section-2"
+      id="section-experience"
       class="relative mx-auto grid max-w-7xl snap-start gap-12 p-8 max-sm:py-16 lg:min-h-screen lg:grid-cols-6 lg:p-16 xl:gap-24"
     >
       <!-- Sticky Hero (left) -->
@@ -68,7 +68,7 @@ const nextLang = lang === 'en' ? 'de' : 'en';
       </div>
     </div>
     <div
-      id="section-3"
+      id="section-contact"
       class="slide-enter-content flex h-screen snap-start items-center justify-center px-4"
     >
       <div class="mx-4">
@@ -128,7 +128,7 @@ const nextLang = lang === 'en' ? 'de' : 'en';
     document
       ?.querySelector('.scroll-icon')
       ?.addEventListener('click', function () {
-        const section = document.getElementById('section-2');
+        const section = document.getElementById('section-experience');
         section?.scrollIntoView({ behavior: 'smooth' });
       });
 
@@ -230,7 +230,7 @@ const nextLang = lang === 'en' ? 'de' : 'en';
 
     @media (prefers-reduced-motion: no-preference) {
       .slide-enter,
-      .slide-enter-content > *:not(:has(.table-of-contents)) {
+      .slide-enter-content > * {
         --enter-stage: 0;
         --enter-step: 400ms;
         --enter-initial: 0ms;
@@ -245,60 +245,6 @@ const nextLang = lang === 'en' ? 'de' : 'en';
       }
       .slide-enter-content > *:nth-child(2) {
         --enter-stage: 2 !important;
-      }
-      .slide-enter-content > *:nth-child(3) {
-        --enter-stage: 3 !important;
-      }
-      .slide-enter-content > *:nth-child(4) {
-        --enter-stage: 4 !important;
-      }
-      .slide-enter-content > *:nth-child(5) {
-        --enter-stage: 5 !important;
-      }
-      .slide-enter-content > *:nth-child(6) {
-        --enter-stage: 6 !important;
-      }
-      .slide-enter-content > *:nth-child(7) {
-        --enter-stage: 7 !important;
-      }
-      .slide-enter-content > *:nth-child(8) {
-        --enter-stage: 8 !important;
-      }
-      .slide-enter-content > *:nth-child(9) {
-        --enter-stage: 9 !important;
-      }
-      .slide-enter-content > *:nth-child(10) {
-        --enter-stage: 10 !important;
-      }
-      .slide-enter-content > *:nth-child(11) {
-        --enter-stage: 11 !important;
-      }
-      .slide-enter-content > *:nth-child(12) {
-        --enter-stage: 12 !important;
-      }
-      .slide-enter-content > *:nth-child(13) {
-        --enter-stage: 13 !important;
-      }
-      .slide-enter-content > *:nth-child(14) {
-        --enter-stage: 14 !important;
-      }
-      .slide-enter-content > *:nth-child(15) {
-        --enter-stage: 15 !important;
-      }
-      .slide-enter-content > *:nth-child(16) {
-        --enter-stage: 16 !important;
-      }
-      .slide-enter-content > *:nth-child(17) {
-        --enter-stage: 17 !important;
-      }
-      .slide-enter-content > *:nth-child(18) {
-        --enter-stage: 18 !important;
-      }
-      .slide-enter-content > *:nth-child(19) {
-        --enter-stage: 19 !important;
-      }
-      .slide-enter-content > *:nth-child(20) {
-        --enter-stage: 20 !important;
       }
     }
   </style>
