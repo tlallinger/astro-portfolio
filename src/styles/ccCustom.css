@@ -1,0 +1,53 @@
+.cc--custom {
+  --cc-bg: rgb(var(--color-fill));
+  --cc-primary-color: rgb(var(--color-text-base));
+  --cc-secondary-color: rgb(var(--color-text-muted));
+
+  --cc-btn-primary-bg: rgb(var(--color-button-accent));
+  --cc-btn-primary-color: black;
+  --cc-btn-primary-hover-bg: rgb(var(--color-button-accent-hover));
+  --cc-btn-primary-hover-color: black;
+  --cc-btn-primary-border-color: var(--cc-btn-primary-bg);
+
+  --cc-btn-secondary-bg: rgb(var(--color-button-muted));
+  --cc-btn-secondary-color: rgb(var(--color-text-base));
+  --cc-btn-secondary-border-color: transparent;
+  --cc-btn-secondary-hover-bg: rgb(var(--muted));
+  --cc-btn-secondary-hover-color: rgb(var(--color-text-base));
+  --cc-btn-secondary-hover-border-color: transparent;
+
+  --cc-cookie-category-block-bg: rgb(var(--color-fill));
+  --cc-cookie-category-block-border: rgb(var(--muted));
+  --cc-cookie-category-block-hover-bg: rgb(var(--muted));
+  --cc-cookie-category-hover-border: rgb(var(--muted));
+  --cc-cookie-category-expanded-block-hover-bg: rgb(var(--muted));
+  --cc-cookie-category-expanded-block-bg: rgb(var(--color-fill));
+
+  --cc-toggle-readonly-bg: rgb(var(--muted));
+  --cc-overlay-bg: rgba(0, 0, 0, 0.5);
+
+  --cc-toggle-on-bg: rgb(var(--color-button-accent));
+  --cc-toggle-off-bg: rgb(var(--muted));
+  --cc-toggle-on-knob-bg: rgb(var(--color-fill));
+  --cc-toggle-off-knob-bg: rgb(var(--color-text-inverted));
+  --cc-toggle-readonly-knob-bg: rgb(var(--color-fill));
+  --cc-toggle-enabled-icon-color: rgb(var(--color-text-inverted));
+  --cc-toggle-disabled-icon-color: rgb(var(--color-text-inverted));
+  --cc-toggle-readonly-knob-icon-color: rgb(var(--color-text-muted));
+  --cc-section-category-border: rgb(var(--muted));
+
+  --cc-webkit-scrollbar-bg: rgb(var(--muted));
+  --cc-webkit-scrollbar-hover-bg: rgb(var(--color-button-accent-hover));
+
+  --cc-separator-border-color: rgb(var(--muted));
+
+  --cc-footer-bg: rgb(var(--color-fill));
+  --cc-footer-color: rgb(var(--color-text-muted));
+  --cc-footer-border-color: rgb(var(--muted));
+}
+
+.cc--custom #cc-main .cm,
+.cc--custom #cc-main .pm {
+  color-scheme: dark;
+  border: 1px solid var(--cc-separator-border-color);
+}

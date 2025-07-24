@@ -1,0 +1,14 @@
+---
+import 'vanilla-cookieconsent/dist/cookieconsent.css';
+import '@/styles/ccCustom.css';
+---
+
+<script>
+  import { run } from 'vanilla-cookieconsent';
+  import { config } from './CookieConsentConfig';
+
+  if (!window.location.pathname.includes('/dsgvo')) {
+    document.body.classList.add('cc--custom');
+    run(config);
+  }
+</script>

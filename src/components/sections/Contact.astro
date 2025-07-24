@@ -63,7 +63,7 @@ import { t } from '@/i18n/utils';
         class="rounded-md border border-skin-hue/20 bg-white/10 px-3 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-skin-hue"
         placeholder={t('contact.message.placeholder')}></textarea>
     </div>
-    <div data-netlify-recaptcha="true"></div>
+    <div id="recaptcha" data-netlify-recaptcha="false"></div>
     <button
       type="submit"
       id="submit-btn"
@@ -79,9 +79,15 @@ import { t } from '@/i18n/utils';
 </Section>
 
 <script>
+  import { acceptedCategory } from 'vanilla-cookieconsent';
+
   const handleSubmit = (event: Event) => {
     event.preventDefault();
 
+    if (!acceptedCategory('necessary')) {
+      alert('Please accept necessary cookies to submit the form.');
+      return;
+    }
     const myForm = event.target as HTMLFormElement;
     const formData = new FormData(myForm);
 

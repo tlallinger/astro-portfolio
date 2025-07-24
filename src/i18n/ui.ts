@@ -32,6 +32,7 @@ export const ui: Record<keyof typeof languages, Record<string, string>> = {
     'contact.invalidEmail': 'Please enter a valid email address.',
     'impressum.title': 'Imprint',
     'dsgvo.title': 'Privacy Policy',
+    'cookieConsent.alert': 'Please accept necessary cookies to submit the form.',
   },
   de: {
     'section.about': 'Über mich',
@@ -59,5 +60,6 @@ export const ui: Record<keyof typeof languages, Record<string, string>> = {
     'contact.invalidEmail': 'Bitte gib eine gültige E-Mail-Adresse ein.',
     'impressum.title': 'Impressum',
     'dsgvo.title': 'Datenschutz',
+    'cookieConsent.alert': 'Bitte akzeptiere notwendige Cookies, um das Formular abzusenden.',
   }
 } as const;

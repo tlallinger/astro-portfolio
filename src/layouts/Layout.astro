@@ -1,7 +1,8 @@
 ---
-import '@/globals.css';
+import '@/styles/globals.css';
 import { getCV, lang } from '@/i18n/utils';
 import FloatingBackButton from '@/components/FloatingBackButton.astro';
+import CookieConsent from '@/components/CookieConsent/CookieConsent.astro';
 
 const title = 'worldwidedev';
 const {
@@ -28,6 +29,8 @@ const hasBackBtn = Astro.props.hasBackBtn ?? false;
     <meta name="referrer" content="no-referrer" />
   </head>
   <body data-theme={theme} class="relative bg-skin-fill font-sans">
+    <CookieConsent />
+
     {hasBackBtn && <FloatingBackButton />}
 
     <div class="absolute top-0 -z-10 h-full w-full">
