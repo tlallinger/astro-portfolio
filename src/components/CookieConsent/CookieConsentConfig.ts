@@ -22,6 +22,7 @@ export const config: CookieConsentConfig = {
     },
   },
   onConsent({ cookie }) {
+    document.querySelector('form[name="contact"]')?.setAttribute('data-netlify-recaptcha', cookie.categories.includes('necessary') ? 'true' : 'false');
     document.getElementById('contact-recaptcha')?.setAttribute('data-netlify-recaptcha', cookie.categories.includes('necessary') ? 'true' : 'false');
   },
   language: {
