@@ -1,40 +1,47 @@
 ---
 import { getCV } from '@/i18n/utils';
 import { t } from '@/i18n/utils';
+import DownloadCV from '@/components/DownloadCV.astro';
 
 const { basics } = getCV();
 ---
 
 <div class="space-y-5 text-center lg:text-left">
   <div id="about-header" class="space-y-5">
-    <span class="text-7xl xl:text-nowrap">{basics.label}</span>
-    <div class="font-mono text-4xl">
-      <div>{basics.greet}</div>
+    <h1 class="text-7xl font-normal xl:text-nowrap">{basics.label}</h1>
+    <p class="font-mono text-4xl">
+      <span class="block">{basics.greet}</span>
       <span class="text-5xl text-skin-hue">
         {basics.firstname}<span class="text-skin-base">.</span>
       </span>
-    </div>
+    </p>
   </div>
   <p
     id="about-summary"
     class="gap-4 font-mono leading-relaxed"
     set:html={basics.summary}
   />
-  <div class="mt-6 flex justify-end">
+  <div
+    id="about-cta"
+    class="mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-end"
+  >
     <button
-      id="contact-button"
-      class="rounded-md border border-skin-hue/20 bg-skin-button-accent/5 px-10 py-2 font-medium text-skin-hue transition hover:bg-skin-button-accent/20 hover:text-skin-inverted"
+      id="experience-button"
+      type="button"
+      class="rounded-md border border-skin-hue/20 bg-skin-button-accent/5 px-8 py-2 font-medium text-skin-hue transition hover:bg-skin-button-accent/20"
     >
-      {t('contact.button')}
+      {t('about.cta.experience')}
     </button>
+    <DownloadCV variant="button" />
   </div>
 </div>
 
 <script is:inline>
   document
-    .getElementById('contact-button')
+    .getElementById('experience-button')
     ?.addEventListener('click', function () {
-      const section = document.getElementById('section-contact');
-      section?.scrollIntoView({ behavior: 'smooth' });
+      const section = document.getElementById('section-experience');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      section?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
     });
 </script>

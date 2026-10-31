@@ -4,30 +4,30 @@ import { Icon } from 'astro-icon/components'
 import { t, getCV, lang } from '@/i18n/utils';
 
 const { work } = getCV();
-const isExpanded = (work.length === 1)
-
+// Every entry starts expanded; the toggle lets readers collapse long ones.
+const isExpanded = true;
+const formatMonth = (date: string) => new Date(date).toLocaleString(lang, { month: 'long', year: 'numeric' });
 ---
 
-<Section className={Astro.props.className} title={t('section.experience')} >
+<Section id="experience" className={Astro.props.className} title={t('section.experience')} >
   <ul class="flex flex-col">
-    {work.map(({ name, startDate, endDate, position, industry, highlights, responsibilities, achievements, url, skills, location, location_type }) => {
-      const startTime = new Date(startDate).toLocaleString(lang, { month: 'long', year: 'numeric' })
-      const endTime = endDate != null ? new Date(endDate).toLocaleString(lang, { month: 'long', year: 'numeric' }) : t('timeline.present');
+    {work.map(({ name, startDate, endDate, position, industry, highlights, responsibilities, achievements, url, skills, location, location_type }, index) => {
+      const detailsId = `experience-details-${index}`;
 
       return (
         <li class="relative">
           <div data-expanded={isExpanded.toString()} class="group relative grid pb-1 transition-all sm:grid-cols-12 sm:gap-8 md:gap-6 lg:hover:!opacity-100 expand-container">
             <header class="relative mt-1 text-xs font-semibold sm:col-span-2">
-              <time datetime={startTime} data-title={startTime}>{startTime}</time> - <time datetime={endTime} data-title={endTime}>{endTime}</time>
+              <time datetime={startDate}>{formatMonth(startDate)}</time> - {endDate ? <time datetime={endDate}>{formatMonth(endDate)}</time> : <span>{t('timeline.present')}</span>}
             </header>
             <div class="relative flex flex-col pb-6 before:-ml-6 sm:col-span-10 before:w-px before:absolute before:bg-skin-muted before:h-full before:mt-2">
               <h3>
-                <div class="inline-flex items-center text-lg leading-tight group/link focus-visible:text-amber-500" aria-label="{position} - {company}">
+                <div class="inline-flex items-center text-lg leading-tight group/link">
                   <span>{position}<span class="ml-1">@</span>
-                  {url ? (<a class="text-skin-hue" href={url} title={name} target="_blank">{name}</a>) : (<span>{name}</span>)}
+                  {url ? (<a class="text-skin-hue rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-skin-hue" href={url} title={name} target="_blank" rel="noopener noreferrer">{name}</a>) : (<span>{name}</span>)}
                   {url &&
-                    <span class="inline-block text-skin-hue">
-                      <Icon name="ri:arrow-up-line" class="inline-block w-4 h-4 ml-1 transition-transform translate-y-px shrink-0 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none rotate-45" aria-hidden="true">
+                    <span class="inline-block text-skin-hue" aria-hidden="true">
+                      <Icon name="ri:arrow-up-line" class="inline-block w-4 h-4 ml-1 transition-transform translate-y-px shrink-0 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-within/link:-translate-y-1 group-focus-within/link:translate-x-1 motion-reduce:transition-none rotate-45">
                       </Icon>
                     </span>
                   }
@@ -50,7 +50,7 @@ const isExpanded = (work.length === 1)
                 )}
 
                 {(responsibilities || achievements) &&  (
-                <div class="after:from-skin-hue dark:after:to-skin-hue/0 flex relative flex-col after:bg-gradient-to-t after:absolute after:bottom-0 gap-6 after:w-full after:h-24 after:content-[''] h-52 group-data-[expanded=true]:after:hidden group-data-[expanded=true]:h-auto overflow-hidden duration-200 ease-out">
+                <div id={detailsId} class="after:from-skin-hue dark:after:to-skin-hue/0 flex relative flex-col after:bg-gradient-to-t after:absolute after:bottom-0 gap-6 after:w-full after:h-24 after:content-[''] h-52 group-data-[expanded=true]:after:hidden group-data-[expanded=true]:h-auto overflow-hidden duration-200 ease-out">
 
                   {highlights?.length > 0 && (
                     <div class="flex flex-col gap-1">
@@ -85,20 +85,23 @@ const isExpanded = (work.length === 1)
                 )}
                  </div>
 
-                <button 
+                <button
+                  type="button"
                   class="group/more w-fit cursor-pointer items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-all hover:text-skin-base flex expand-button"
+                  aria-expanded={isExpanded}
+                  aria-controls={detailsId}
                   data-seeless={t('experience.seeLess')}
                   data-seemore={t('experience.seeMore')}
                 >
                   <span class="expand-text"></span>
-                  <Icon name="ri:arrow-up-s-line" class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out group-data-[expanded=true]:rotate-180" width={24} height={24}></Icon>
+                  <Icon name="ri:arrow-up-s-line" class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out group-data-[expanded=true]:rotate-180" width={24} height={24} aria-hidden="true"></Icon>
                 </button>
 
 
-                <ul class="flex flex-wrap gap-2" aria-label="Technologies used">
+                <ul class="flex flex-wrap gap-2" aria-label={t('experience.technologies')}>
                   {skills && Object.entries(skills).map(([label, icon]) =>  (
                       <li class="bg-skin-button-accent/20 border-skin-hue/20 text-skin-hue  -800 flex gap-1 items-center border-solid  border rounded-md px-2 py-0.5 text-xs backdrop-blur-sm">
-                        {icon && <Icon name={icon} width={16} height={16} />} <span>{label}</span>
+                        {icon && <Icon name={icon} width={16} height={16} aria-hidden="true" />} <span>{label}</span>
                       </li>
                     )
                   )
@@ -114,18 +117,23 @@ const isExpanded = (work.length === 1)
   </ul>
 </Section>
 <script>
-  const expandButtons = document.querySelectorAll('.expand-button');
+  const expandButtons = document.querySelectorAll<HTMLButtonElement>('.expand-button');
 
-  expandButtons.forEach(btn => {
-    const button = btn as HTMLButtonElement;
+  expandButtons.forEach((button) => {
     const container = button.closest<HTMLElement>('.expand-container')!;
-      const expandText = button.querySelector('.expand-text')!;
-      expandText.innerHTML = (container.dataset.expanded === 'true' ? button.dataset.seeless : button.dataset.seemore) || '';
+    const expandText = button.querySelector('.expand-text')!;
 
-      button.addEventListener('click', () => {
+    const render = () => {
+      const expanded = container.dataset.expanded === 'true';
+      button.setAttribute('aria-expanded', String(expanded));
+      expandText.textContent = (expanded ? button.dataset.seeless : button.dataset.seemore) || '';
+    };
+
+    button.addEventListener('click', () => {
       container.dataset.expanded = container.dataset.expanded === 'true' ? 'false' : 'true';
-      expandText.innerHTML = (container.dataset.expanded === 'true' ? button.dataset.seeless : button.dataset.seemore) || '';
+      render();
     });
+    render();
   });
 </script>
 

@@ -1,3 +1,5 @@
+import type { ThemeName } from '@/styles/theme';
+
 export interface CV {
   basics: Basics;
   work: Array<Work>;
@@ -9,8 +11,10 @@ interface Basics {
   greet: string;
   firstname: string;
   name: string;
-  theme: string;
+  theme: ThemeName;
   label: string;
+  location: string;
+  phone: string;
   image: string;
   email: string;
   summary: string;
@@ -53,6 +57,6 @@ interface Languages {
   fluency: string;
 }
 
-type Language = "English" | "German" | string;
+type Language = 'English' | 'German' | string;
 
 type Highlight = Array<String>;

@@ -1,0 +1,9 @@
+---
+/**
+ * Emits the CV data for the PDF download once per page so that any number of
+ * DownloadCV buttons can share it.
+ */
+import { serializePdfPayload } from '@/lib/cvPdfPayload';
+---
+
+<script type="application/json" id="cv-pdf-payload" set:html={serializePdfPayload()} />

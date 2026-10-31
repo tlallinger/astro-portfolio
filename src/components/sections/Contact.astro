@@ -4,6 +4,7 @@ import { t } from '@/i18n/utils';
 ---
 
 <Section
+  id="contact"
   className={Astro.props.className}
   title={t('section.contact')}
   subtitle={t('section.contact.subtitle')}
@@ -23,7 +24,7 @@ import { t } from '@/i18n/utils';
     </p>
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
       <div class="flex flex-col">
-        <label for="name" class="mb-1 text-sm font-medium text-white"
+        <label for="name" class="mb-1 text-sm font-medium text-skin-base"
           >{t('contact.name')}</label
         >
         <input
@@ -31,12 +32,13 @@ import { t } from '@/i18n/utils';
           id="name"
           name="name"
           required
-          class="rounded-md border border-skin-hue/20 bg-white/10 px-3 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-skin-hue"
+          autocomplete="name"
+          class="placeholder-white/60focus:outline-none rounded-md border border-skin-hue/20 bg-white/10 px-3 py-2 text-skin-base focus:ring-2 focus:ring-skin-hue"
           placeholder={t('contact.name.placeholder')}
         />
       </div>
       <div class="flex flex-col">
-        <label for="email" class="mb-1 text-sm font-medium text-white"
+        <label for="email" class="mb-1 text-sm font-medium text-skin-base"
           >{t('contact.email')}</label
         >
         <input
@@ -44,14 +46,15 @@ import { t } from '@/i18n/utils';
           id="email"
           name="email"
           required
-          class="rounded-md border border-skin-hue/20 bg-white/10 px-3 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-skin-hue"
+          autocomplete="email"
+          class="rounded-md border border-skin-hue/20 bg-white/10 px-3 py-2 text-skin-base placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-skin-hue"
           placeholder={t('contact.email.placeholder')}
         />
       </div>
     </div>
 
     <div class="flex flex-col">
-      <label for="message" class="mb-1 text-sm font-medium text-white"
+      <label for="message" class="mb-1 text-sm font-medium text-skin-base"
         >{t('contact.message')}</label
       >
       <textarea
@@ -59,59 +62,72 @@ import { t } from '@/i18n/utils';
         name="message"
         rows="4"
         required
-        class="rounded-md border border-skin-hue/20 bg-white/10 px-3 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-skin-hue"
+        class="rounded-md border border-skin-hue/20 bg-white/10 px-3 py-2 text-skin-base placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-skin-hue"
         placeholder={t('contact.message.placeholder')}></textarea>
     </div>
     <button
       type="submit"
       id="submit-btn"
-      class="rounded-md border border-skin-hue/20 bg-skin-button-accent/20 px-10 py-2 text-xs font-medium text-skin-hue transition hover:bg-skin-button-accent hover:text-skin-inverted"
+      class="rounded-md border border-skin-hue/20 bg-skin-button-accent/20 px-10 py-2 text-xs font-medium text-skin-hue transition hover:bg-skin-button-accent hover:text-skin-inverted disabled:cursor-wait disabled:opacity-60"
     >
       {t('contact.submit')}
     </button>
 
-    <p id="form-status" class="mt-4 hidden text-sm text-white">
-      {t('contact.success')} ✅
+    <p
+      id="form-status"
+      role="status"
+      aria-live="polite"
+      class="mt-4 hidden text-sm text-skin-base"
+    >
+      {t('contact.success')}
+    </p>
+    <p id="form-error" role="alert" class="mt-4 hidden text-sm text-red-400">
+      {t('contact.error')}
     </p>
   </form>
 </Section>
 
 <script>
-  const handleSubmit = (event: Event) => {
+  const form = document.querySelector<HTMLFormElement>('#contact-form');
+  const status = document.getElementById('form-status');
+  const error = document.getElementById('form-error');
+  const submitButton = document.getElementById(
+    'submit-btn'
+  ) as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (!submitButton) return;
 
-    const myForm = event.target as HTMLFormElement;
-    const formData = new FormData(myForm);
+    submitButton.disabled = true;
+    error?.classList.add('hidden');
 
-    fetch('/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: new URLSearchParams(formData as any).toString(),
-    })
-      .then(() => {
-        const statusMessage = document.getElementById('form-status');
-        const submitButton = document.getElementById('submit-btn');
-        if (statusMessage && submitButton) {
-          submitButton.classList.add('hidden');
-          statusMessage.classList.remove('hidden');
-        }
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(
+          new FormData(form) as unknown as Record<string, string>
+        ).toString(),
+      });
+      if (!response.ok)
+        throw new Error(
+          `Form submission failed with status ${response.status}`
+        );
 
-        setTimeout(() => {
-          if (statusMessage) {
-            statusMessage.classList.add('hidden');
-          }
-          if (submitButton) {
-            submitButton.classList.remove('hidden');
-          }
-          myForm.reset();
-        }, 5000);
-      })
-      .catch((error) => alert(error));
-  };
+      submitButton.classList.add('hidden');
+      status?.classList.remove('hidden');
+      form.reset();
 
-  document
-    .querySelector('#contact-form')
-    ?.addEventListener('submit', handleSubmit as EventListener);
+      setTimeout(() => {
+        status?.classList.add('hidden');
+        submitButton.classList.remove('hidden');
+      }, 5000);
+    } catch (reason) {
+      console.error(reason);
+      error?.classList.remove('hidden');
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
 </script>

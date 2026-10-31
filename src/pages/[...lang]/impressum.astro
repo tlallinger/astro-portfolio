@@ -5,12 +5,13 @@ export function getStaticPaths() {
   return [{ params: { lang: 'en' } }, { params: { lang: 'de' } }];
 }
 
-import { getCV } from '@/i18n/utils';
+import { getCV, changeLanguage, t } from '@/i18n/utils';
 
+if (Astro.params.lang) changeLanguage(Astro.params.lang);
 const { basics } = getCV();
 ---
 
-<Layout lang={Astro.params.lang} hasBackBtn={true}>
+<Layout lang={Astro.params.lang} title={t('impressum.title')} hasBackBtn={true}>
   <div
     class="flex h-screen flex-col items-center justify-center gap-4 p-8 text-white"
   >

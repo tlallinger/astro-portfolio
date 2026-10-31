@@ -1,0 +1,80 @@
+---
+/**
+ * Triggers the client-side CV PDF generation. Needs <CvPdfPayload /> once on the page.
+ * `variant="icon"` renders a square icon button matching the profile links,
+ * `variant="button"` a labelled ghost button for call-to-action rows.
+ */
+import { Icon } from 'astro-icon/components';
+import { t } from '@/i18n/utils';
+
+interface Props {
+  variant?: 'icon' | 'button';
+  className?: string;
+}
+
+const { variant = 'icon', className = '' } = Astro.props;
+const label = t('cv.download');
+---
+
+{
+  variant === 'icon' ? (
+    <button
+      type="button"
+      class:list={[
+        'download-cv inline-flex size-10 items-center justify-center rounded-md p-1 text-skin-hue transition-all duration-500 ease-linear hover:bg-skin-button-accent hover:text-skin-inverted disabled:cursor-wait disabled:opacity-60',
+        className,
+      ]}
+      data-error={t('cv.download.error')}
+      title={label}
+      aria-label={label}
+    >
+      <Icon name="mdi:download" size={50} aria-hidden="true" />
+    </button>
+  ) : (
+    <button
+      type="button"
+      class:list={[
+        'download-cv inline-flex items-center gap-2 rounded-md border border-skin-hue/20 px-6 py-2 font-medium text-skin-muted transition hover:border-skin-hue/60 hover:text-skin-hue disabled:cursor-wait disabled:opacity-60',
+        className,
+      ]}
+      data-error={t('cv.download.error')}
+    >
+      <Icon name="mdi:download" class="size-5 shrink-0" aria-hidden="true" />
+      <span>{label}</span>
+    </button>
+  )
+}
+
+<script>
+  import type { PdfPayload } from '@/lib/cvPdf';
+
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.download-cv');
+  const payloadElement = document.getElementById('cv-pdf-payload');
+
+  const setBusy = (busy: boolean) => {
+    buttons.forEach((button) => {
+      button.disabled = busy;
+      if (busy) button.setAttribute('aria-busy', 'true');
+      else button.removeAttribute('aria-busy');
+    });
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', async () => {
+      if (button.disabled || !payloadElement?.textContent) return;
+      const payload = JSON.parse(payloadElement.textContent) as Omit<PdfPayload, 'siteUrl'>;
+
+      setBusy(true);
+      try {
+        // jsPDF is only loaded when someone actually asks for the file.
+        const { generateCvPdf } = await import('@/lib/cvPdf');
+        await generateCvPdf({ ...payload, siteUrl: window.location.host });
+      } catch (error) {
+        console.error('CV PDF generation failed', error);
+        alert(button.dataset.error);
+      } finally {
+        setBusy(false);
+      }
+    });
+  });
+</script>

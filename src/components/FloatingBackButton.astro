@@ -1,15 +1,17 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { lang } from '@/i18n/utils';
+import { lang, t } from '@/i18n/utils';
 ---
 
 <a
   href={`/${lang}`}
   class="fixed left-6 top-6 rounded-2xl bg-skin-fill text-skin-hue"
-  aria-label="Back to home"
+  aria-label={t('nav.back')}
+  title={t('nav.back')}
 >
   <Icon
     name="mdi:arrow-left-circle"
     class="text-4xl transition-transform duration-200 group-hover:text-6xl"
+    aria-hidden="true"
   />
 </a>

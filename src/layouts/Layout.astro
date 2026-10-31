@@ -1,30 +1,65 @@
 ---
 import '@/styles/globals.css';
-import { getCV, lang } from '@/i18n/utils';
+import { getCV, lang, changeLanguage } from '@/i18n/utils';
+import { languages, defaultLang } from '@/i18n/ui';
 import FloatingBackButton from '@/components/FloatingBackButton.astro';
+import { themeCss } from '@/styles/theme';
 
-const title = 'worldwidedev';
+interface Props {
+  lang?: string;
+  /** Page-specific title; the name is appended automatically. */
+  title?: string;
+  description?: string;
+  hasBackBtn?: boolean;
+}
+
+if (Astro.props.lang) changeLanguage(Astro.props.lang);
+
 const {
-  basics: { image, summary, theme },
+  basics: { image, summary, theme, firstname, name, label },
 } = getCV();
+const fullName = `${firstname} ${name}`;
+const stripHtml = (html: string) =>
+  html
+    .replace(/<br\s*\/?>/gi, ' ')
+    .replace(/<[^>]+>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 
-// Props hasBackBtn
+const title = Astro.props.title ? `${Astro.props.title} – ${fullName}` : `${fullName} – ${label}`;
+const description = Astro.props.description ?? stripHtml(summary);
 const hasBackBtn = Astro.props.hasBackBtn ?? false;
+
+// Language-neutral path ("" for the start page, "/impressum", ...) for canonical and alternate links.
+const localePath = Astro.url.pathname.replace(/^\/(de|en)(?=\/|$)/, '').replace(/\/$/, '');
+const site = Astro.site ?? new URL('https://world-wide.dev');
+const urlFor = (code: string) => new URL(`/${code}${localePath}`, site).href;
+const canonical = urlFor(lang);
+const xDefault = localePath === '' ? site.href : urlFor(defaultLang);
+const ogImage = new URL(image, site).href;
+const ogLocale = lang === 'de' ? 'de_DE' : 'en_US';
 ---
 
 <!doctype html>
 <html lang={lang} class="dark">
   <head>
     <meta charset="UTF-8" />
+    <style is:inline set:html={themeCss()} />
     <title>{title}</title>
-    <meta name="description" content={summary} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonical} />
+    {Object.keys(languages).map((code) => <link rel="alternate" hreflang={code} href={urlFor(code)} />)}
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
     <link rel="icon" href={image} />
-    <link rel="preload" as="image" href={image} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={fullName} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={summary} />
-    <meta property="og:image" content={image} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta name="twitter:card" content="summary" />
     <meta name="referrer" content="no-referrer" />
   </head>
   <body data-theme={theme} class="relative bg-skin-fill font-sans">

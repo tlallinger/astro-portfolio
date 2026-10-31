@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://world-wide.dev/sitemap-index.xml

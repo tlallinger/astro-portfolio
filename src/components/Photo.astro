@@ -6,8 +6,7 @@ import photoWebp from '@/assets/photo.webp?url';
 import { getCV } from '@/i18n/utils';
 
 const { basics } = getCV();
-
-const { firstname } = basics;
+const fullName = `${basics.firstname} ${basics.name}`;
 ---
 
 <Section>
@@ -20,7 +19,7 @@ const { firstname } = basics;
         <source srcset={photoWebp} type="image/webp" />
         <img
           src={photoPNG}
-          alt={firstname}
+          alt={fullName}
           class="rounded-full"
           loading="lazy"
           decoding="async"
@@ -33,6 +32,8 @@ const { firstname } = basics;
       fill="transparent"
       viewBox="0 0 506 506"
       xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
     >
       <circle
         cx="253"
@@ -57,6 +58,13 @@ const { firstname } = basics;
       opacity: 0;
     }
     to {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in {
+      animation: none;
       opacity: 1;
     }
   }
