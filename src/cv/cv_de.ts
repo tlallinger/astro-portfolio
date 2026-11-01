@@ -40,9 +40,9 @@ export default <CV>{
       industry: 'IT-Beratung',
       highlights: [],
       responsibilities: [
-        'Technische Leitung bei der Entwicklung von Anwendungen für die deutsche Bundesregierung und den öffentlichen Sektor mit starkem Fokus auf Code-Qualität, Skalierbarkeit, Sicherheit und Performance.',
+        'Tech Lead bei der Entwicklung von Anwendungen für den öffentlichen Sektor mit starkem Fokus auf Code-Qualität, Skalierbarkeit, Sicherheit und Performance.',
         'Konzeption und Etablierung von KI-Agenten-gestützten Entwicklungsworkflows; Integration von Coding-Agents in den täglichen Entwicklungsprozess unter Beibehaltung von Quality Gates und Review-Standards.',
-        'Verantwortlich für Tooling, CI/CD-Pipelines und die Entwicklungsplattform (GitLab, Docker, Vite, pnpm, Bun), um Feedback-Zyklen zu verkürzen und Deployments zuverlässig und reproduzierbar zu halten.',
+        'Verantwortlich für Tooling, CI/CD-Pipelines und die Entwicklungsplattform (GitLab, Docker, Vite, pnpm), um Feedback-Zyklen zu verkürzen und Deployments zuverlässig und reproduzierbar zu halten.',
         'Vorantreiben von testgetriebener Entwicklung (TDD) und Erhöhung der Testabdeckung in Frontend und Backend, um Regressionen früh sichtbar zu machen und Refactorings abzusichern.',
         'Durchführung detaillierter, tiefgehender Code-Reviews sowie Definition von Coding-Standards und Architekturrichtlinien für das Team.',
         'Identifikation und Behebung von Sicherheits- und Performance-Problemen über den gesamten Stack, von Datenbankabfragen bis zum Vue-Frontend.',

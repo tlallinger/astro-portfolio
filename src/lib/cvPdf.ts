@@ -1,6 +1,6 @@
 import type { CV } from '@/cv/types';
 import type { jsPDF } from 'jspdf';
-import { getTheme, type RGB, type Theme } from '@/styles/theme';
+import { accentOnWhite, getTheme, type Palette, type RGB } from '@/styles/theme';
 
 export interface PdfLabels {
   present: string;
@@ -41,22 +41,25 @@ const LEVEL_ORDER = [
   'Grundkenntnisse',
 ];
 
+/** Neutral print colors for the white main column; everything else comes from the theme. */
+const PRINT = { text: [39, 39, 42] as RGB, muted: [113, 113, 122] as RGB, rule: [228, 228, 231] as RGB };
+
 /**
- * Maps the shared website theme onto the PDF: the sidebar uses the dark palette
- * (like the site), the white main column uses the light palette's text and accent.
+ * Maps the shared website theme onto the PDF: the sidebar mirrors the site,
+ * the white main column uses neutral text and the accent darkened for print.
  */
-function pdfColors(theme: Theme) {
+function pdfColors(theme: Palette) {
   return {
-    sidebar: theme.dark.fill,
-    sidebarText: theme.dark.textBase,
-    sidebarMuted: theme.dark.textMuted,
-    sidebarRule: theme.dark.muted,
-    sidebarAccent: theme.dark.accent,
-    sidebarChip: theme.dark.buttonMuted,
-    text: theme.light.textBase,
-    muted: theme.light.textMuted,
-    rule: tint(theme.light.textMuted, 0.25),
-    accent: theme.light.accent,
+    sidebar: theme.fill,
+    sidebarText: theme.textBase,
+    sidebarMuted: theme.textMuted,
+    sidebarRule: theme.muted,
+    sidebarAccent: theme.accent,
+    sidebarChip: theme.buttonMuted,
+    text: PRINT.text,
+    muted: PRINT.muted,
+    rule: PRINT.rule,
+    accent: accentOnWhite(theme),
   };
 }
 

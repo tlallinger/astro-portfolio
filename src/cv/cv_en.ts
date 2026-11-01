@@ -40,7 +40,7 @@ export default <CV>{
       industry: 'IT Services',
       highlights: [],
       responsibilities: [
-        'Technical lead for the development of applications for the German federal government and public sector, with a strong focus on code quality, scalability, security, and performance.',
+        'Technical lead for the development of applications for public sector, with a strong focus on code quality, scalability, security, and performance.',
         'Designed and established AI-agent-assisted development workflows, integrating coding agents into the daily engineering process while keeping quality gates and review standards intact.',
         'Owned tooling, CI/CD pipelines, and the developer platform (GitLab, Docker, Vite, pnpm, Bun) to shorten feedback loops and keep deployments reliable and reproducible.',
         'Drove test-driven development and raised test coverage across frontend and backend, making regressions visible early and refactorings safe.',
@@ -69,7 +69,7 @@ export default <CV>{
     },
     {
       name: 'Netfonds AG',
-      position: 'Fullstack Developer (Freelance)',
+      position: 'Fullstack Developer (Contractor)',
       location_type: 'Remote',
       location: 'Hamburg, DE',
       url: 'https://www.netfonds.de/',

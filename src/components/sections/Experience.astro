@@ -50,7 +50,7 @@ const formatMonth = (date: string) => new Date(date).toLocaleString(lang, { mont
                 )}
 
                 {(responsibilities || achievements) &&  (
-                <div id={detailsId} class="after:from-skin-hue dark:after:to-skin-hue/0 flex relative flex-col after:bg-gradient-to-t after:absolute after:bottom-0 gap-6 after:w-full after:h-24 after:content-[''] h-52 group-data-[expanded=true]:after:hidden group-data-[expanded=true]:h-auto overflow-hidden duration-200 ease-out">
+                <div id={detailsId} class="after:from-skin-hue after:to-skin-hue/0 flex relative flex-col after:bg-gradient-to-t after:absolute after:bottom-0 gap-6 after:w-full after:h-24 after:content-[''] h-52 group-data-[expanded=true]:after:hidden group-data-[expanded=true]:h-auto overflow-hidden duration-200 ease-out">
 
                   {highlights?.length > 0 && (
                     <div class="flex flex-col gap-1">
@@ -100,7 +100,7 @@ const formatMonth = (date: string) => new Date(date).toLocaleString(lang, { mont
 
                 <ul class="flex flex-wrap gap-2" aria-label={t('experience.technologies')}>
                   {skills && Object.entries(skills).map(([label, icon]) =>  (
-                      <li class="bg-skin-button-accent/20 border-skin-hue/20 text-skin-hue  -800 flex gap-1 items-center border-solid  border rounded-md px-2 py-0.5 text-xs backdrop-blur-sm">
+                      <li class="bg-skin-button-accent/20 border-skin-hue/70 contrast-more:border-skin-hue text-skin-hue  -800 flex gap-1 items-center border-solid  border rounded-md px-2 py-0.5 text-xs backdrop-blur-sm">
                         {icon && <Icon name={icon} width={16} height={16} aria-hidden="true" />} <span>{label}</span>
                       </li>
                     )

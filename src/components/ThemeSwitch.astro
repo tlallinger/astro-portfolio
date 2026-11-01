@@ -1,88 +1,94 @@
 ---
+/**
+ * Cycles through the color themes defined in src/styles/theme.ts.
+ * The chosen theme is stored in localStorage and applied before first paint by Layout.astro.
+ */
 import { Icon } from 'astro-icon/components';
+import { t } from '@/i18n/utils';
+import { themeNames } from '@/styles/theme';
+
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
 ---
 
-<div
-  class={`group flex cursor-pointer items-center gap-2 rounded-md bg-transparent ${Astro.props.className}`}
+<button
+  id="theme-switch"
+  type="button"
+  class:list={[
+    'group inline-flex size-10 items-center justify-center rounded-md text-skin-hue transition hover:bg-skin-button-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-skin-hue',
+    className,
+  ]}
+  data-themes={themeNames.join(',')}
+  aria-label={t('theme.toggle')}
+  title={t('theme.toggle')}
 >
-  <button id="themeSwitch" class="cursor-pointer" aria-label="Toggle dark mode">
-    <i
-      class="flex items-center gap-1 text-sm font-medium leading-6 text-skin-base transition-transform ease-in-out group-hover/theme:rotate-45"
-    >
-      <Icon
-        name="ri:moon-fill"
-        class="hidden dark:block"
-        width={25}
-        height={25}
-      />
-      <Icon name="ri:sun-fill" class="dark:hidden" width={20} height={20} />
-    </i>
-  </button>
-</div>
-
-<style>
-  :global(.dark) {
-    color-scheme: dark;
-  }
-</style>
+  <Icon
+    name="ri:palette-fill"
+    class="transition-transform duration-300 group-hover:rotate-12"
+    width={22}
+    height={22}
+    aria-hidden="true"
+  />
+</button>
 
 <script>
-  const themeSwitchButton = document.getElementById('themeSwitch');
+  const button = document.getElementById('theme-switch');
+  const root = document.documentElement;
+  const names = button?.dataset.themes?.split(',') ?? [];
 
-  let isDark = document.documentElement.classList.contains('dark');
+  const applyTheme = (name: string) => {
+    root.dataset.theme = name;
+    try {
+      localStorage.setItem('theme', name);
+    } catch {
+      // storage may be unavailable (private mode); the switch still works for this page view
+    }
+  };
 
-  function toggleDark(event: MouseEvent) {
-    const x = event.clientX;
-    const y = event.clientY;
+  const nextTheme = () => {
+    const index = names.indexOf(root.dataset.theme ?? '');
+    return names[(index + 1) % names.length];
+  };
 
-    startTransition(x, y);
-  }
+  button?.addEventListener('click', (event: MouseEvent) => {
+    const name = nextTheme();
+    if (!name) return;
 
-  function startTransition(x: number, y: number) {
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+    if (reduceMotion || typeof document.startViewTransition !== 'function') {
+      applyTheme(name);
+      return;
+    }
+
+    // Reveal the new theme in a circle growing from the click position.
+    const x = event.clientX || window.innerWidth / 2;
+    const y = event.clientY || window.innerHeight / 2;
     const endRadius = Math.hypot(
       Math.max(x, innerWidth - x),
       Math.max(y, innerHeight - y)
     );
-
-    const transition = document.startViewTransition(async () => {
-      isDark = !isDark;
-      updateTheme();
-    });
-
+    const transition = document.startViewTransition(() => applyTheme(name));
     transition.ready.then(() => {
-      const clipPath = [
-        `circle(0px at ${x}px ${y}px)`,
-        `circle(${endRadius}px at ${x}px ${y}px)`,
-      ];
-      document.documentElement.animate(
+      root.animate(
         {
-          clipPath: isDark ? [...clipPath].reverse() : clipPath,
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${endRadius}px at ${x}px ${y}px)`,
+          ],
         },
         {
-          duration: 700,
+          duration: 1000,
           easing: 'ease-out',
-          pseudoElement: isDark
-            ? '::view-transition-old(root)'
-            : '::view-transition-new(root)',
+          pseudoElement: '::view-transition-new(root)',
         }
       );
     });
-  }
-
-  function updateTheme() {
-    document.documentElement.classList.toggle('dark', isDark);
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  }
-
-  if (themeSwitchButton) {
-    themeSwitchButton.addEventListener('click', toggleDark);
-  }
-
-  // Initialize theme based on user preference or system setting
-  if (localStorage.theme === 'light') {
-    isDark = false;
-    updateTheme();
-  }
+  });
 </script>
 
 <style is:global>
@@ -96,11 +102,5 @@ import { Icon } from 'astro-icon/components';
   }
   ::view-transition-new(root) {
     z-index: 9999;
-  }
-  .dark::view-transition-old(root) {
-    z-index: 9999;
-  }
-  .dark::view-transition-new(root) {
-    z-index: 1;
   }
 </style>
