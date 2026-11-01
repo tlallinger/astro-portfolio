@@ -34,7 +34,7 @@ const label = t('cv.download');
     <button
       type="button"
       class:list={[
-        'download-cv inline-flex items-center gap-2 rounded-md border border-skin-hue/70 contrast-more:border-skin-hue px-6 py-2 font-medium text-skin-muted transition hover:border-skin-hue/60 hover:text-skin-hue disabled:cursor-wait disabled:opacity-60',
+        'download-cv inline-flex items-center gap-2 rounded-md border border-skin-hue/70 px-6 py-2 font-medium text-skin-muted transition hover:border-skin-hue/60 hover:text-skin-hue disabled:cursor-wait disabled:opacity-60 contrast-more:border-skin-hue',
         className,
       ]}
       data-error={t('cv.download.error')}
@@ -63,7 +63,10 @@ const label = t('cv.download');
   buttons.forEach((button) => {
     button.addEventListener('click', async () => {
       if (button.disabled || !payloadElement?.textContent) return;
-      const payload = JSON.parse(payloadElement.textContent) as Omit<PdfPayload, 'siteUrl'>;
+      const payload = JSON.parse(payloadElement.textContent) as Omit<
+        PdfPayload,
+        'siteUrl'
+      >;
       // The PDF follows the theme currently selected on the page, not the one in the CV data.
       const activeTheme = document.documentElement.dataset.theme;
       if (isThemeName(activeTheme)) payload.cv.basics.theme = activeTheme;

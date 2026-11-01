@@ -9,9 +9,9 @@ export const ui: Record<keyof typeof languages, Record<string, string>> = {
   en: {
     'section.about': 'About',
     'section.experience': 'Experience',
-    'section.contact': 'Are you ready to bring your ideas to life?',
+    'section.contact': "Let's talk.",
     'section.contact.subtitle':
-      'Together, we turn innovative projects into reality—from concept to launch.',
+      'Got a project, a question or just want to say hi? Drop me a line.',
     'timeline.present': 'Present',
     'experience.industry': 'Industry',
     'experience.highlights': 'Highlights',
@@ -49,9 +49,9 @@ export const ui: Record<keyof typeof languages, Record<string, string>> = {
   de: {
     'section.about': 'Über mich',
     'section.experience': 'Erfahrung',
-    'section.contact': 'Bereit, Ihre Vision Wirklichkeit werden zu lassen?',
+    'section.contact': 'Lass uns reden.',
     'section.contact.subtitle':
-      'Gemeinsam realisieren wir innovative Projekte von der Konzeption bis zum Launch.',
+      'Projekt, Frage oder einfach nur Hallo sagen? Schreib mir.',
     'timeline.present': 'Heute',
     'experience.industry': 'Branche',
     'experience.highlights': 'Highlights',

@@ -6,7 +6,7 @@ import DownloadCV from '@/components/DownloadCV.astro';
 const { basics } = getCV();
 ---
 
-<div class="space-y-5 text-center lg:text-left">
+<div class="space-y-5">
   <div id="about-header" class="space-y-5">
     <h1 class="text-7xl font-normal xl:text-nowrap">{basics.label}</h1>
     <p class="font-mono text-4xl">
@@ -23,12 +23,12 @@ const { basics } = getCV();
   />
   <div
     id="about-cta"
-    class="mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-end"
+    class="items mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-end"
   >
     <button
       id="experience-button"
       type="button"
-      class="rounded-md border border-skin-hue/70 contrast-more:border-skin-hue bg-skin-button-accent/5 px-8 py-2 font-medium text-skin-hue transition hover:bg-skin-button-accent/20"
+      class="rounded-md border border-skin-hue/70 bg-skin-button-accent/5 px-8 py-2 font-medium text-skin-hue transition hover:bg-skin-button-accent/20 contrast-more:border-skin-hue"
     >
       {t('about.cta.experience')}
     </button>
@@ -41,7 +41,12 @@ const { basics } = getCV();
     .getElementById('experience-button')
     ?.addEventListener('click', function () {
       const section = document.getElementById('section-experience');
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      section?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      const reduceMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      ).matches;
+      section?.scrollIntoView({
+        behavior: reduceMotion ? 'auto' : 'smooth',
+        block: 'start',
+      });
     });
 </script>

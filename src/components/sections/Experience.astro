@@ -21,18 +21,22 @@ const formatMonth = (date: string) => new Date(date).toLocaleString(lang, { mont
               <time datetime={startDate}>{formatMonth(startDate)}</time> - {endDate ? <time datetime={endDate}>{formatMonth(endDate)}</time> : <span>{t('timeline.present')}</span>}
             </header>
             <div class="relative flex flex-col pb-6 before:-ml-6 sm:col-span-10 before:w-px before:absolute before:bg-skin-muted before:h-full before:mt-2">
-              <h3>
-                <div class="inline-flex items-center text-lg leading-tight group/link">
-                  <span>{position}<span class="ml-1">@</span>
-                  {url ? (<a class="text-skin-hue rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-skin-hue" href={url} title={name} target="_blank" rel="noopener noreferrer">{name}</a>) : (<span>{name}</span>)}
-                  {url &&
-                    <span class="inline-block text-skin-hue" aria-hidden="true">
-                      <Icon name="ri:arrow-up-line" class="inline-block w-4 h-4 ml-1 transition-transform translate-y-px shrink-0 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-within/link:-translate-y-1 group-focus-within/link:translate-x-1 motion-reduce:transition-none rotate-45">
-                      </Icon>
-                    </span>
-                  }
-                  </span>
-                </div>
+              <h3 class="text-lg leading-tight">
+                {position}<span class="ml-1">@</span>
+                {url ? (
+                  <a
+                    class="group/link ml-1 inline-flex items-center whitespace-nowrap rounded-sm text-skin-hue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-skin-hue"
+                    href={url}
+                    title={name}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {name}
+                    <Icon name="ri:arrow-up-line" class="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px rotate-45 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none" aria-hidden="true" />
+                  </a>
+                ) : (
+                  <span class="ml-1">{name}</span>
+                )}
               </h3>
               {(location || location_type) && (
                 <div class="text-xs text-skin-muted">

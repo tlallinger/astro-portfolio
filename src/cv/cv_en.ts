@@ -48,7 +48,7 @@ export default <CV>{
         'Identified and remediated security and performance issues across the stack, from database queries to the Vue frontend.',
       ],
       achievements: [
-        'Established an AI-agent-assisted development workflow with explicit review gates, so generated code passes the same quality bar as hand-written code.',
+        'Smooth go-live of the application without critical issues, backed by a stable CI/CD pipeline, high test coverage and consistent code reviews.',
         'Built the CI/CD pipeline and developer tooling for the team, turning builds, tests and deployments into a repeatable, automated process.',
         'Introduced test-driven development as the team standard and raised test coverage of the core applications.',
       ],

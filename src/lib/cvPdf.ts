@@ -1,6 +1,11 @@
 import type { CV } from '@/cv/types';
 import type { jsPDF } from 'jspdf';
-import { accentOnWhite, getTheme, type Palette, type RGB } from '@/styles/theme';
+import {
+  accentOnWhite,
+  getTheme,
+  type Palette,
+  type RGB,
+} from '@/styles/theme';
 
 export interface PdfLabels {
   present: string;
@@ -42,7 +47,11 @@ const LEVEL_ORDER = [
 ];
 
 /** Neutral print colors for the white main column; everything else comes from the theme. */
-const PRINT = { text: [39, 39, 42] as RGB, muted: [113, 113, 122] as RGB, rule: [228, 228, 231] as RGB };
+const PRINT = {
+  text: [39, 39, 42] as RGB,
+  muted: [113, 113, 122] as RGB,
+  rule: [228, 228, 231] as RGB,
+};
 
 /**
  * Maps the shared website theme onto the PDF: the sidebar mirrors the site,

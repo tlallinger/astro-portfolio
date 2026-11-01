@@ -20,6 +20,9 @@ export function t(key: keyof (typeof ui)[typeof defaultLang]) {
 }
 
 export function getCV() {
-  const cvs = import.meta.glob<CV>('../cv/cv_*.ts', { eager: true, import: 'default' });
+  const cvs = import.meta.glob<CV>('../cv/cv_*.ts', {
+    eager: true,
+    import: 'default',
+  });
   return cvs[`../cv/cv_${lang}.ts`];
 }

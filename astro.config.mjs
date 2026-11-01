@@ -13,7 +13,12 @@ export default defineConfig({
   },
   integrations: [
     tailwind(),
-    sitemap({ i18n: { defaultLocale: defaultLang, locales: { de: 'de-DE', en: 'en-US' } } }),
+    sitemap({
+      i18n: {
+        defaultLocale: defaultLang,
+        locales: { de: 'de-DE', en: 'en-US' },
+      },
+    }),
     astroIcon({
       include: {
         mdi: ['*'],

@@ -7,8 +7,8 @@ import About from '@/components/sections/About.astro';
 import Photo from '@/components/Photo.astro';
 import Contact from '@/components/sections/Contact.astro';
 import CvPdfPayload from '@/components/CvPdfPayload.astro';
+import LanguageSwitch from '@/components/LanguageSwitch.astro';
 import { changeLanguage, t, lang } from '@/i18n/utils';
-import { languages } from '@/i18n/ui';
 
 export function getStaticPaths() {
   return [
@@ -21,7 +21,6 @@ if (Astro.params.lang) {
   changeLanguage(Astro.params.lang);
 }
 
-const nextLang = lang === 'en' ? 'de' : 'en';
 ---
 
 <Layout lang={lang}>
@@ -72,17 +71,8 @@ const nextLang = lang === 'en' ? 'de' : 'en';
       class="relative bottom-0 left-0 w-full gap-4 border-t border-white/10 p-4 text-sm backdrop-blur-sm transition-transform duration-300 lg:fixed lg:flex lg:flex-row lg:justify-between lg:px-10"
       style="z-index: 50"
     >
-      <span class="flex w-full justify-between">
-        <a
-          href={`/${nextLang}`}
-          aria-label={`${t('lang.switch')} ${languages[nextLang]}`}
-          title={`${t('lang.switch')} ${languages[nextLang]}`}
-          hreflang={nextLang}
-          class="w-fit rounded-md border border-skin-hue/70 contrast-more:border-skin-hue bg-skin-button-accent/20 px-2 text-xs text-skin-hue transition hover:bg-skin-button-accent hover:text-skin-inverted"
-        >
-          {languages[lang]}
-        </a>
-
+      <span class="flex w-full items-center justify-between">
+        <LanguageSwitch className="h-7 px-2" />
         <div>
           <a
             href={`/${lang}/impressum`}
@@ -115,7 +105,8 @@ const nextLang = lang === 'en' ? 'de' : 'en';
     if (footer && contactSection && 'IntersectionObserver' in window) {
       footer.classList.add('is-hidden');
       new IntersectionObserver(
-        ([entry]) => footer.classList.toggle('is-hidden', !entry.isIntersecting),
+        ([entry]) =>
+          footer.classList.toggle('is-hidden', !entry.isIntersecting),
         { root: mainEl, threshold: 0.25 }
       ).observe(contactSection);
     }

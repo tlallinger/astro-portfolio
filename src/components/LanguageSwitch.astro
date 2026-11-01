@@ -1,0 +1,30 @@
+---
+/**
+ * Links to the same page in the other language. The label shows the current
+ * language; the accessible name describes the action.
+ */
+import { lang, t } from '@/i18n/utils';
+import { languages } from '@/i18n/ui';
+
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+const nextLang = lang === 'en' ? 'de' : 'en';
+// Language-neutral path ("" for the start page, "/impressum", ...)
+const localePath = Astro.url.pathname.replace(/^\/(de|en)(?=\/|$)/, '').replace(/\/$/, '');
+---
+
+<a
+  href={`/${nextLang}${localePath}`}
+  hreflang={nextLang}
+  aria-label={`${t('lang.switch')} ${languages[nextLang]}`}
+  title={`${t('lang.switch')} ${languages[nextLang]}`}
+  class:list={[
+    'inline-flex h-10 items-center rounded-md border border-skin-hue/70 bg-skin-button-accent/20 px-3 text-xs font-medium text-skin-hue transition hover:bg-skin-button-accent hover:text-skin-inverted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-skin-hue contrast-more:border-skin-hue',
+    className,
+  ]}
+>
+  {languages[lang]}
+</a>

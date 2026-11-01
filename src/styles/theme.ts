@@ -138,7 +138,7 @@ export const activeMode: keyof ThemeModes = 'dark';
 /** The active palette per theme; everything else in the app reads from this. */
 export const themes = themeNames.reduce(
   (acc, name) => ({ ...acc, [name]: palettes[name][activeMode] }),
-  {} as Record<ThemeName, Palette>,
+  {} as Record<ThemeName, Palette>
 );
 
 export const defaultTheme: ThemeName = 'green';
@@ -177,9 +177,14 @@ export function themeCss(): string {
   }
   // Users who ask the OS for more contrast get full-strength secondary text.
   const highContrast = Object.entries(themes)
-    .map(([name, palette]) => `[data-theme="${name}"] { ${cssVariables.textMuted}: ${palette.textBase.join(', ')}; }`)
+    .map(
+      ([name, palette]) =>
+        `[data-theme="${name}"] { ${cssVariables.textMuted}: ${palette.textBase.join(', ')}; }`
+    )
     .join(' ');
-  rules.push(`@media (prefers-contrast: more) { :root { ${cssVariables.textMuted}: ${themes[defaultTheme].textBase.join(', ')}; } ${highContrast} }`);
+  rules.push(
+    `@media (prefers-contrast: more) { :root { ${cssVariables.textMuted}: ${themes[defaultTheme].textBase.join(', ')}; } ${highContrast} }`
+  );
   return rules.join('\n');
 }
 
@@ -206,7 +211,9 @@ export function contrastRatio(a: RGB, b: RGB) {
 export function accentOnWhite(palette: Palette, minContrast = 4.5): RGB {
   const white: RGB = [255, 255, 255];
   for (let factor = 1; factor > 0; factor -= 0.02) {
-    const candidate = palette.accent.map((c) => Math.round(c * factor)) as unknown as RGB;
+    const candidate = palette.accent.map((c) =>
+      Math.round(c * factor)
+    ) as unknown as RGB;
     if (contrastRatio(candidate, white) >= minContrast) return candidate;
   }
   return [0, 0, 0];

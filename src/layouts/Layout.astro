@@ -3,8 +3,8 @@ import '@/styles/globals.css';
 import { getCV, lang, changeLanguage } from '@/i18n/utils';
 import { languages, defaultLang } from '@/i18n/ui';
 import FloatingBackButton from '@/components/FloatingBackButton.astro';
-import { themeCss, themeNames } from '@/styles/theme';
 import ThemeSwitch from '@/components/ThemeSwitch.astro';
+import { themeCss, themeNames } from '@/styles/theme';
 
 interface Props {
   lang?: string;
@@ -27,12 +27,16 @@ const stripHtml = (html: string) =>
     .replace(/\s+/g, ' ')
     .trim();
 
-const title = Astro.props.title ? `${Astro.props.title} – ${fullName}` : `${fullName} – ${label}`;
+const title = Astro.props.title
+  ? `${Astro.props.title} – ${fullName}`
+  : `${fullName} – ${label}`;
 const description = Astro.props.description ?? stripHtml(summary);
 const hasBackBtn = Astro.props.hasBackBtn ?? false;
 
 // Language-neutral path ("" for the start page, "/impressum", ...) for canonical and alternate links.
-const localePath = Astro.url.pathname.replace(/^\/(de|en)(?=\/|$)/, '').replace(/\/$/, '');
+const localePath = Astro.url.pathname
+  .replace(/^\/(de|en)(?=\/|$)/, '')
+  .replace(/\/$/, '');
 const site = Astro.site ?? new URL('https://world-wide.dev');
 const urlFor = (code: string) => new URL(`/${code}${localePath}`, site).href;
 const canonical = urlFor(lang);
@@ -45,19 +49,24 @@ const ogLocale = lang === 'de' ? 'de_DE' : 'en_US';
 <html lang={lang} data-theme={theme}>
   <head>
     <meta charset="UTF-8" />
-    <style is:inline set:html={themeCss()} />
+    <style is:inline set:html={themeCss()}></style>
     <script is:inline define:vars={{ themeNames }}>
       // Runs before first paint so the stored theme never flashes.
       try {
         const stored = localStorage.getItem('theme');
-        if (themeNames.includes(stored)) document.documentElement.dataset.theme = stored;
+        if (themeNames.includes(stored))
+          document.documentElement.dataset.theme = stored;
       } catch (_) {}
     </script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="canonical" href={canonical} />
-    {Object.keys(languages).map((code) => <link rel="alternate" hreflang={code} href={urlFor(code)} />)}
+    {
+      Object.keys(languages).map((code) => (
+        <link rel="alternate" hreflang={code} href={urlFor(code)} />
+      ))
+    }
     <link rel="alternate" hreflang="x-default" href={xDefault} />
     <link rel="icon" href={image} />
     <meta property="og:type" content="website" />

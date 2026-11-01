@@ -3,7 +3,6 @@ import Section from '@/components/Section.astro';
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 import { getCV, t } from '@/i18n/utils';
-import DownloadCV from '@/components/DownloadCV.astro';
 
 const { basics, languages } = getCV();
 const { firstname, name, label, image, profiles, email, location } = basics;
@@ -55,7 +54,6 @@ const { firstname, name, label, image, profiles, email, location } = basics;
             );
           })
         }
-        <DownloadCV />
       </footer>
     </div>
     <figure class="relative w-fit">
@@ -110,7 +108,7 @@ const { firstname, name, label, image, profiles, email, location } = basics;
   }
 
   footer {
-    @apply mt-2 flex gap-1 text-sm;
+    @apply mt-2 flex flex-wrap items-center gap-1 text-sm;
   }
 
   footer a {
