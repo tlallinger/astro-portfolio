@@ -17,7 +17,7 @@ const { className = '' } = Astro.props;
 <button
   type="button"
   class:list={[
-    'theme-switch group inline-flex size-10 items-center justify-center rounded-md text-skin-hue transition hover:bg-skin-button-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-skin-hue',
+    'theme-switch group hidden size-10 items-center justify-center rounded-md text-skin-hue transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-skin-hue md:inline-flex',
     className,
   ]}
   data-themes={themeNames.join(',')}
